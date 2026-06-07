@@ -5,15 +5,19 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       colors: {
-        ink: '#172033',
-        steel: '#5d7187',
-        signal: '#1f9d8a',
-        ember: '#e86f43',
+        ink: '#111827',
+        steel: '#64708a',
+        signal: '#475aa7',
+        leaf: '#60b630',
+        cloud: '#f6f8ff',
+        line: '#dce2f2',
       },
       boxShadow: {
-        soft: '0 24px 70px rgba(23, 32, 51, 0.14)',
+        soft: '0 24px 70px rgba(18, 24, 38, 0.14)',
+        lift: '0 18px 48px rgba(71, 90, 167, 0.18)',
       },
     },
   },
