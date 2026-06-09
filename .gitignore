@@ -1,4 +1,7 @@
-node_modules
-dist
+.env
+.env.local
 .DS_Store
-npm-debug.log*
+.next
+node_modules
+directus/uploads
+postgres-data

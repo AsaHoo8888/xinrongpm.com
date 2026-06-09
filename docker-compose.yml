@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: xinrongpm-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-directus}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-directus_password}
+      POSTGRES_DB: ${POSTGRES_DB:-directus}
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  directus:
+    image: directus/directus:latest
+    container_name: xinrongpm-directus
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    ports:
+      - "8055:8055"
+    environment:
+      KEY: ${DIRECTUS_KEY:-replace-with-a-long-random-key}
+      SECRET: ${DIRECTUS_SECRET:-replace-with-a-long-random-secret}
+      ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL:-admin@example.com}
+      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD:-change-me}
+      DB_CLIENT: pg
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: ${POSTGRES_DB:-directus}
+      DB_USER: ${POSTGRES_USER:-directus}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-directus_password}
+      PUBLIC_URL: http://localhost:8055
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: "http://localhost:3000"
+    volumes:
+      - ./directus/uploads:/directus/uploads
