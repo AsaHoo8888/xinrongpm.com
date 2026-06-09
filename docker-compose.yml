@@ -1,38 +1,75 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: xinrongpm-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-directus}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-directus_password}
-      POSTGRES_DB: ${POSTGRES_DB:-directus}
+      POSTGRES_USER: directus
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Please set POSTGRES_PASSWORD}
+      POSTGRES_DB: directus
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U directus -d directus"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   directus:
-    image: directus/directus:latest
-    container_name: xinrongpm-directus
+    image: directus/directus:11
     restart: unless-stopped
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     ports:
       - "8055:8055"
     environment:
-      KEY: ${DIRECTUS_KEY:-replace-with-a-long-random-key}
-      SECRET: ${DIRECTUS_SECRET:-replace-with-a-long-random-secret}
+      KEY: ${DIRECTUS_KEY:?Please set DIRECTUS_KEY}
+      SECRET: ${DIRECTUS_SECRET:?Please set DIRECTUS_SECRET}
       ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL:-admin@example.com}
-      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD:-change-me}
+      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD:?Please set DIRECTUS_ADMIN_PASSWORD}
       DB_CLIENT: pg
       DB_HOST: postgres
       DB_PORT: 5432
-      DB_DATABASE: ${POSTGRES_DB:-directus}
-      DB_USER: ${POSTGRES_USER:-directus}
-      DB_PASSWORD: ${POSTGRES_PASSWORD:-directus_password}
-      PUBLIC_URL: http://localhost:8055
+      DB_DATABASE: directus
+      DB_USER: directus
+      DB_PASSWORD: ${POSTGRES_PASSWORD:?Please set POSTGRES_PASSWORD}
+      PUBLIC_URL: ${PUBLIC_URL:-http://localhost:8055}
       CORS_ENABLED: "true"
-      CORS_ORIGIN: "http://localhost:3000"
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3000}
     volumes:
-      - ./directus/uploads:/directus/uploads
+      - directus_uploads:/directus/uploads
+
+  nextjs:
+    image: node:22-alpine
+    restart: unless-stopped
+    depends_on:
+      - directus
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_SITE_URL: ${SITE_URL:-http://localhost:3000}
+      NEXT_PUBLIC_DIRECTUS_URL: ${DIRECTUS_INTERNAL_URL:-http://directus:8055}
+      DIRECTUS_STATIC_TOKEN: ${DIRECTUS_STATIC_TOKEN:-}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:?Please set GITHUB_TOKEN (PAT with repo access)}
+    volumes:
+      - nextjs_app:/app
+    command: >
+      sh -c "
+        apk add --no-cache git &&
+        if [ ! -f /app/package.json ]; then
+          git clone --depth=1 https://\${GITHUB_TOKEN}@github.com/AsaHoo8888/xinrongpm.com.git /app_tmp &&
+          cp -a /app_tmp/. /app/ &&
+          rm -rf /app_tmp;
+        else
+          git pull --ff-only;
+        fi &&
+        npm ci --production=false &&
+        npm run build &&
+        npm run start
+      "
+
+volumes:
+  postgres_data:
+  directus_uploads:
+  nextjs_app:
