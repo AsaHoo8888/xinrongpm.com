@@ -1,19 +1,40 @@
 import { NextResponse } from "next/server";
 import { createInquiry } from "../../../lib/directus";
 
+function getFormValue(form, key) {
+  const value = form.get(key);
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function formatPhone(phone, phoneCode) {
+  if (!phone) {
+    return "";
+  }
+
+  if (!phoneCode || phone.startsWith(phoneCode)) {
+    return phone;
+  }
+
+  return `${phoneCode} ${phone}`;
+}
+
 export async function POST(request) {
   const form = await request.formData();
+  const phone = getFormValue(form, "phone");
+  const phoneCode = getFormValue(form, "phone_code");
   const fields = {
-    full_name: form.get("full_name"),
-    email: form.get("email"),
-    phone: form.get("phone"),
-    country: form.get("country"),
-    message: form.get("message"),
-    source_page: form.get("source_page") || "/",
+    full_name: getFormValue(form, "full_name"),
+    email: getFormValue(form, "email"),
+    phone: formatPhone(phone, phoneCode),
+    country: getFormValue(form, "country"),
+    message: getFormValue(form, "message"),
+    source_page: getFormValue(form, "source_page") || "/",
+    product_title: getFormValue(form, "product_title"),
+    submitted_at: new Date().toISOString(),
   };
 
   const result = await createInquiry(fields);
-  const status = result.ok || result.skipped ? "sent" : "error";
+  const status = result.ok ? "sent" : "error";
   const sourcePage =
     typeof fields.source_page === "string" && fields.source_page.startsWith("/")
       ? fields.source_page

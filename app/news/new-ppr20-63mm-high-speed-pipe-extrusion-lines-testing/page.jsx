@@ -108,7 +108,7 @@ function NavLinks() {
         Home
       </a>
       <div className="nav-dropdown">
-        <a className="nav-link dropdown-trigger" href="/#products">
+        <a className="nav-link dropdown-trigger" href="/products">
           Products <ChevronDown size={14} aria-hidden="true" />
         </a>
         <div className="dropdown-panel">
@@ -131,10 +131,10 @@ function NavLinks() {
       <a className="nav-link" href="/video">
         Video
       </a>
-      <a className="nav-link" href="/#cases">
+      <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/#about">
+      <a className="nav-link" href="/about">
         About
       </a>
       <a className="nav-link" href="/contact">

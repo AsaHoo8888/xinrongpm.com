@@ -18,25 +18,50 @@ export const metadata = {
 };
 
 const certificates = [
-  ["High-tech Enterprise", "Recognition", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-1-scaled.jpg"],
-  ["ISO 9001", "Quality System", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-2.png"],
-  ["SGS", "Verification", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-3.jpg"],
-  ["CE Certification", "Compliance", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-4.jpg"],
-  ["Patent 01", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-5-scaled.jpg"],
-  ["Patent 02", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-6-scaled.jpg"],
-  ["Patent 03", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-8-scaled.jpg"],
-  ["Patent 04", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-9-scaled.jpg"],
-  ["Patent 05", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-10-scaled.jpg"],
-  ["Patent 06", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-11-scaled.jpg"],
-  ["Patent 07", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-12-scaled.jpg"],
-  ["Patent 08", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-13-scaled.jpg"],
-  ["Patent 09", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-14-scaled.jpg"],
-  ["Patent 10", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-15-scaled.jpg"],
-  ["Patent 11", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-16-scaled.jpg"],
-  ["Patent 12", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-17-scaled.jpg"],
-  ["Patent 13", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-18-scaled.jpg"],
-  ["Patent 14", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-19-scaled.jpg"],
-  ["Patent 15", "Innovation", "https://xinrongpm.com/wp-content/uploads/2024/07/Cer-20-scaled.jpg"],
+  {
+    title: "High-tech Enterprise",
+    category: "Recognition",
+    image: "/images/certificates/xinrongplas-high-tech-enterprise-certificate.jpg",
+    alt: "Xinrongplas High-tech Enterprise certificate",
+    width: 2560,
+    height: 1612,
+  },
+  {
+    title: "ISO 9001",
+    category: "Quality System",
+    image: "/images/certificates/xinrongplas-iso-9001-quality-system-certificate.png",
+    alt: "Xinrongplas ISO 9001 quality system certificate",
+    width: 1653,
+    height: 2339,
+  },
+  {
+    title: "SGS",
+    category: "Verification",
+    image: "/images/certificates/xinrongplas-sgs-verification-certificate.jpg",
+    alt: "Xinrongplas SGS verification certificate",
+    width: 1891,
+    height: 2552,
+  },
+  {
+    title: "CE Certification",
+    category: "Compliance",
+    image: "/images/certificates/xinrongplas-ce-certification.jpg",
+    alt: "Xinrongplas CE certification for plastic pipe extrusion machinery",
+    width: 1653,
+    height: 2337,
+  },
+  ...Array.from({ length: 15 }, (_, index) => {
+    const number = String(index + 1).padStart(2, "0");
+
+    return {
+      title: `Patent ${number}`,
+      category: "Innovation",
+      image: `/images/certificates/xinrongplas-patent-certificate-${number}.jpg`,
+      alt: `Xinrongplas patent certificate ${number} for plastic extrusion machinery`,
+      width: index === 0 ? 1800 : 1810,
+      height: 2560,
+    };
+  }),
 ];
 
 const stats = [
@@ -64,7 +89,7 @@ function NavLinks() {
         Home
       </a>
       <div className="nav-dropdown">
-        <a className="nav-link dropdown-trigger" href="/#products">
+        <a className="nav-link dropdown-trigger" href="/products">
           Products <ChevronDown size={14} aria-hidden="true" />
         </a>
         <div className="dropdown-panel">
@@ -87,10 +112,10 @@ function NavLinks() {
       <a className="nav-link" href="/video">
         Video
       </a>
-      <a className="nav-link" href="/#cases">
+      <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/#about">
+      <a className="nav-link" href="/about">
         About
       </a>
       <a className="nav-link" href="/contact">
@@ -167,10 +192,18 @@ export default function CertificatesPage() {
               <h2>Corporate Qualifications</h2>
             </div>
             <div className="certificate-grid">
-              {certificates.map(([title, category, image]) => (
+              {certificates.map(({ title, category, image, alt, width, height }) => (
                 <article className="certificate-card" key={`${title}-${image}`}>
                   <a href={image} target="_blank" rel="noreferrer" aria-label={`Open ${title}`}>
-                    <img src={image} alt={title} />
+                    <img
+                      src={image}
+                      alt={alt}
+                      title={alt}
+                      width={width}
+                      height={height}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </a>
                   <div>
                     <small>{category}</small>

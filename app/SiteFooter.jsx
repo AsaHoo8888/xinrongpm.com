@@ -1,13 +1,15 @@
 import { Facebook, Send, Youtube } from "lucide-react";
 import { productNav } from "../lib/content";
+import ContactPhoneField from "./contact/ContactPhoneField";
 
 const footerLinks = [
-  ["About Us", "/#about"],
-  ["Development Milestones", "/#about"],
+  ["About Us", "/about"],
+  ["Development Milestones", "/about#milestones"],
   ["Certificates", "/certificates"],
   ["Services", "/services"],
   ["News", "/news"],
   ["Video", "/video"],
+  ["Project Cases", "/cases"],
   ["Contact", "/contact"],
 ];
 
@@ -80,12 +82,11 @@ export default function SiteFooter() {
 
         <div className="footer-form-column">
           <h2>Quick Contact</h2>
-          <form action="/api/inquiries" method="post">
+          <form id="form-footer-quick-contact" action="/api/inquiries" method="post">
             <input name="source_page" type="hidden" value="/contact" />
-            <input name="country" type="hidden" value="Website footer" />
             <input name="full_name" placeholder="Name" required type="text" />
             <input name="email" placeholder="Email" required type="email" />
-            <input name="phone" placeholder="Phone" type="tel" />
+            <ContactPhoneField label="" phonePlaceholder="Phone" required={false} />
             <textarea name="message" placeholder="Message" required rows="3" />
             <button type="submit">
               Send Inquiry <Send size={16} aria-hidden="true" />

@@ -4,6 +4,7 @@ import {
   ChevronDown,
   Factory,
   Languages,
+  Lightbulb,
   Mail,
   MapPin,
   Menu,
@@ -11,10 +12,11 @@ import {
   Ruler,
   Search,
   ShieldCheck,
+  Settings,
   Users,
-  Wrench,
 } from "lucide-react";
 import ReviewCarousel from "./ReviewCarousel";
+import ContactPhoneField from "./contact/ContactPhoneField";
 import { getHomeContent } from "../lib/directus";
 import { productNav } from "../lib/content";
 
@@ -65,6 +67,45 @@ const customerReviews = [
   ],
 ];
 
+const homeServices = [
+  {
+    title: "Pre-sale Service",
+    href: "/services#pre-sale",
+    icon: Lightbulb,
+    items: [
+      "Pre-sale consulting by experienced sales engineers",
+      "Provide on-site consultation and service",
+      "Provide pick up service during your visit",
+      "Machine can be highly customized",
+      "Provide turnkey solution",
+    ],
+  },
+  {
+    title: "Sale Service",
+    href: "/services#sale",
+    icon: Settings,
+    items: [
+      "Continuously inform you about project progress",
+      "Arrange your coming for machine inspection and testing",
+      "Transportation packing according to local import regulation",
+      "Free spare parts for machine long time working",
+    ],
+  },
+  {
+    title: "After-sale Service",
+    href: "/services#after-sale",
+    icon: ShieldCheck,
+    items: [
+      "Provide complete set of technical documents",
+      "Provide on-site installation, commissioning, training",
+      "Provide machinery warranty",
+      "Provide Remote Diagnosis Service",
+      "Provide lifelong, on site service, and upgrade for machine",
+      "Sufficient spare parts in stock to ensure quick delivery",
+    ],
+  },
+];
+
 function slugify(value) {
   return value
     .toLowerCase()
@@ -83,7 +124,7 @@ function NavLinks() {
         Home
       </a>
       <div className="nav-dropdown">
-        <a className="nav-link dropdown-trigger" href="#products">
+        <a className="nav-link dropdown-trigger" href="/products">
           Products <ChevronDown size={14} aria-hidden="true" />
         </a>
         <div className="dropdown-panel">
@@ -108,6 +149,10 @@ function NavLinks() {
                     ? "/news"
                     : item === "Video"
                       ? "/video"
+                      : item === "Cases"
+                        ? "/cases"
+                      : item === "About"
+                        ? "/about"
                       : `#${item.toLowerCase()}`
           }
           key={item}
@@ -123,6 +168,62 @@ function StatIcon({ index }) {
   const icons = [Award, Factory, Users, ShieldCheck];
   const Icon = icons[index] || ShieldCheck;
   return <Icon size={36} aria-hidden="true" />;
+}
+
+function ProductCard({ product, heroImage }) {
+  const productName = product.name || product.title || "Product";
+  const image = product.image || heroImage;
+  const hoverImage = product.hoverImage;
+  const imageAlt = product.imageAlt || `${productName} plastic pipe extrusion machine`;
+  const hoverImageAlt = product.hoverImageAlt || `${productName} final pipe product`;
+
+  return (
+    <article
+      className={`product-card${hoverImage ? " has-hover-image" : ""}`}
+      id={slugify(productName)}
+      itemScope
+      itemType="https://schema.org/Product"
+    >
+      <div className="product-media">
+        <img
+          className="product-image product-image-primary"
+          src={image}
+          alt={imageAlt}
+          title={imageAlt}
+          width={product.imageWidth || 1300}
+          height={product.imageHeight || 1000}
+          loading="lazy"
+          decoding="async"
+          itemProp="image"
+        />
+        {hoverImage ? (
+          <img
+            className="product-image product-image-hover"
+            src={hoverImage}
+            alt={hoverImageAlt}
+            title={hoverImageAlt}
+            width={product.hoverImageWidth || 1300}
+            height={product.hoverImageHeight || 1000}
+            loading="lazy"
+            decoding="async"
+          />
+        ) : null}
+      </div>
+      <div className="product-body">
+        <span className="product-tag">{product.tag || "Pipe extrusion line"}</span>
+        <h3 itemProp="name">{productName}</h3>
+        <div className="range-row">
+          <Ruler size={16} aria-hidden="true" />
+          <span>
+            Range: <strong>{product.range || product.diameter_range}</strong>
+          </span>
+        </div>
+        <a href={productHref(productName)} className="text-link" itemProp="url">
+          View More <ArrowRight size={16} aria-hidden="true" />
+        </a>
+      </div>
+    </article>
+  );
 }
 
 export default async function Home({ searchParams }) {
@@ -178,7 +279,7 @@ export default async function Home({ searchParams }) {
                 <a className="primary-button" href="/contact">
                   Get a Free Quote <ArrowRight size={18} aria-hidden="true" />
                 </a>
-                <a className="ghost-button" href="#products">
+                <a className="ghost-button" href="/products">
                   Explore Equipment
                 </a>
               </div>
@@ -212,24 +313,11 @@ export default async function Home({ searchParams }) {
 
             <div className="product-grid">
               {content.products.map((product) => (
-                <article className="product-card" id={slugify(product.name)} key={product.name}>
-                  <div className="product-media">
-                    <img src={product.image || content.hero.image} alt={product.name} />
-                  </div>
-                  <div className="product-body">
-                    <span className="product-tag">{product.tag || "Pipe extrusion line"}</span>
-                    <h3>{product.name}</h3>
-                    <div className="range-row">
-                      <Ruler size={16} aria-hidden="true" />
-                      <span>
-                        Range: <strong>{product.range || product.diameter_range}</strong>
-                      </span>
-                    </div>
-                    <a href={productHref(product.name)} className="text-link">
-                      View More <ArrowRight size={16} aria-hidden="true" />
-                    </a>
-                  </div>
-                </article>
+                <ProductCard
+                  product={product}
+                  heroImage={content.hero.image}
+                  key={product.name || product.title}
+                />
               ))}
             </div>
           </div>
@@ -254,29 +342,28 @@ export default async function Home({ searchParams }) {
           </div>
         </section>
 
-        <section className="section service-section" id="video">
-          <div className="container service-layout">
-            <div>
-              <span className="section-kicker">Video and service</span>
-              <h2>Lifecycle support for precise extrusion projects</h2>
+        <section className="section service-section" id="services">
+          <div className="container">
+            <div className="home-service-heading">
+              <h2>Our Service Excellence</h2>
               <p>
-                The homepage reference emphasizes pre-sale planning, sale-stage
-                coordination, and after-sale response. This section keeps that same
-                service logic while reserving a clear entry for future factory videos.
+                A seamless lifecycle commitment from initial consultation to
+                long-term operational success.
               </p>
             </div>
-            <div className="service-list">
-              {[
-                ["Pre-sale Service", "Project consultation, layout planning, and investment analysis."],
-                ["Sale Service", "Production tracking, installation preparation, and transparent delivery."],
-                ["After-sale Service", "Remote support, on-site commissioning, and long-term parts supply."],
-              ].map(([title, text]) => (
-                <article className="service-item" key={title}>
-                  <Wrench size={22} aria-hidden="true" />
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{text}</p>
-                  </div>
+            <div className="home-service-grid">
+              {homeServices.map(({ title, href, icon: Icon, items }) => (
+                <article className="home-service-card" key={title}>
+                  <span className="home-service-icon">
+                    <Icon size={28} aria-hidden="true" />
+                  </span>
+                  <h3>{title}</h3>
+                  <ul>
+                    {items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <a href={href}>Read More</a>
                 </article>
               ))}
             </div>
@@ -313,7 +400,7 @@ export default async function Home({ searchParams }) {
                 </span>
               </div>
             </div>
-            <form className="inquiry-form" action="/api/inquiries" method="post">
+            <form id="form-home-inquiry" className="inquiry-form" action="/api/inquiries" method="post">
               {inquiryStatus === "sent" ? (
                 <p className="form-status">Inquiry received. We will reply soon.</p>
               ) : null}
@@ -330,14 +417,7 @@ export default async function Home({ searchParams }) {
                 Email Address *
                 <input name="email" required type="email" />
               </label>
-              <label>
-                Phone Number *
-                <input name="phone" required type="tel" />
-              </label>
-              <label>
-                Country *
-                <input name="country" required type="text" />
-              </label>
+              <ContactPhoneField />
               <label>
                 Message *
                 <textarea name="message" required rows="4" />

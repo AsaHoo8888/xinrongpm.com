@@ -14,7 +14,8 @@ export default function ReviewCarousel({ reviews }) {
     }
 
     const firstCard = track.querySelector(".case-card");
-    const distance = firstCard ? firstCard.offsetWidth + 30 : track.clientWidth;
+    const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+    const distance = firstCard ? firstCard.offsetWidth + gap : track.clientWidth;
 
     track.scrollBy({
       left: direction * distance,

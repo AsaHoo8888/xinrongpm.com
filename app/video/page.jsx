@@ -14,6 +14,9 @@ export const metadata = {
     "Watch Xinrongplas plastic pipe extrusion line videos, including PE, PVC, PVC-O, PPR, RTP/TCP, corrugated pipe, winding pipe, and pipe drilling machines.",
 };
 
+const heroImage =
+  "/images/page-heroes/xinrongplas-about-banner-hero.jpg";
+
 const videos = [
   {
     title: "PVC-O pipe extrusion line",
@@ -80,7 +83,7 @@ function NavLinks() {
         Home
       </a>
       <div className="nav-dropdown">
-        <a className="nav-link dropdown-trigger" href="/#products">
+        <a className="nav-link dropdown-trigger" href="/products">
           Products <ChevronDown size={14} aria-hidden="true" />
         </a>
         <div className="dropdown-panel">
@@ -103,10 +106,10 @@ function NavLinks() {
       <a className="nav-link nav-link-active" href="/video">
         Video
       </a>
-      <a className="nav-link" href="/#cases">
+      <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/#about">
+      <a className="nav-link" href="/about">
         About
       </a>
       <a className="nav-link" href="/contact">
@@ -159,6 +162,16 @@ export default function VideoPage() {
       <SiteHeader />
       <main className="video-page-main">
         <section className="video-hero">
+          <img
+            src={heroImage}
+            alt="Xinrongplas video resource center banner for extrusion machinery"
+            title="Xinrongplas video resource center banner for extrusion machinery"
+            width="4134"
+            height="708"
+            loading="eager"
+            decoding="async"
+          />
+          <div className="video-hero-overlay" />
           <div className="container video-hero-copy">
             <span>
               <PlayCircle size={16} aria-hidden="true" />

@@ -30,7 +30,7 @@ function NavLinks() {
         Home
       </a>
       <div className="nav-dropdown">
-        <a className="nav-link nav-link-active dropdown-trigger" href="/#products">
+        <a className="nav-link nav-link-active dropdown-trigger" href="/products">
           Products <ChevronDown size={14} aria-hidden="true" />
         </a>
         <div className="dropdown-panel">
@@ -53,10 +53,10 @@ function NavLinks() {
       <a className="nav-link" href="/video">
         Video
       </a>
-      <a className="nav-link" href="/#cases">
+      <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/#about">
+      <a className="nav-link" href="/about">
         About
       </a>
       <a className="nav-link" href="/contact">
@@ -70,8 +70,11 @@ function SiteHeader() {
   return (
     <header className="site-header">
       <div className="header-inner">
-        <a className="brand product-brand" href="/" aria-label="Xinrongplas Home">
-          Xinrongplas
+        <a className="brand" href="/" aria-label="Xinrongplas Home">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxgN6DgcHA3sZF4ZGd6XMMGRxG8mrG9FXW31mUv9UO5kSnm6J_wSRmkVBn7TmaVxBfkb-a4PjNb0tCsZ1QqS2uw37hRdr-QMZwhOTmu9WhCAt8Q0xD037lHRGu_3G5vLZaRaY06Vj2KRPlVCGrj7Ei8DWfdtewHAEeQYxfZAfKAnWffmj0mCSv3gCO8AiKKZwnZO2PIT4GNa_pE6s75C33koHMlO1CZy21ZYKqlUiDLtYl5jM1csFguMd1xpcOkikx7PIGtReiX-Y"
+            alt="Xinrongplas"
+          />
         </a>
         <nav className="desktop-nav" aria-label="Primary navigation">
           <NavLinks />
@@ -135,7 +138,7 @@ export default async function ProductPage({ params }) {
         <nav className="product-breadcrumb" aria-label="Breadcrumb">
           <a href="/">Home</a>
           <ChevronRight size={16} aria-hidden="true" />
-          <a href="/#products">Products</a>
+          <a href="/products">Products</a>
           <ChevronRight size={16} aria-hidden="true" />
           <span>{product.title}</span>
         </nav>
@@ -218,7 +221,7 @@ export default async function ProductPage({ params }) {
             <a className="primary-button cta-secondary-button" href="/contact">
               Contact Us
             </a>
-            <a className="ghost-button" href="/#cases">
+            <a className="ghost-button" href="/cases">
               View Project References
             </a>
           </div>

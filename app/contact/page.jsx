@@ -13,12 +13,16 @@ import {
   Clock,
 } from "lucide-react";
 import { productNav } from "../../lib/content";
+import ContactPhoneField from "./ContactPhoneField";
 
 export const metadata = {
   title: "Contact Us | Xinrongplas Machinery",
   description:
     "Contact Jiangsu Xinrongplas Machinery Co., Ltd for plastic pipe extrusion lines, quotes, service, and technical support.",
 };
+
+const heroImage =
+  "/images/page-heroes/xinrongplas-about-banner-hero.jpg";
 
 function slugify(value) {
   return value
@@ -38,7 +42,7 @@ function NavLinks() {
         Home
       </a>
       <div className="nav-dropdown">
-        <a className="nav-link dropdown-trigger" href="/#products">
+        <a className="nav-link dropdown-trigger" href="/products">
           Products <ChevronDown size={14} aria-hidden="true" />
         </a>
         <div className="dropdown-panel">
@@ -61,10 +65,10 @@ function NavLinks() {
       <a className="nav-link" href="/video">
         Video
       </a>
-      <a className="nav-link" href="/#cases">
+      <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/#about">
+      <a className="nav-link" href="/about">
         About
       </a>
       <a className="nav-link nav-link-active" href="/contact">
@@ -121,8 +125,13 @@ export default async function ContactPage({ searchParams }) {
       <main className="contact-page-main">
         <section className="contact-hero">
           <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj9wCeiQQIuMyxI8h7dFvrUbIEkrEx0tND1EjImvISKk_hwkrnLfUEZZwyNT9YdQz828sQZfg9cyk2FvojhjzeN4gnGySWzHR6Tz2m8Mt_U9bIafy_Xy9STNIW6IA6byzDNgxPKu-_pe9qjUil4_LwC8vcVe9BEM86sXp5evZtI42DDihh1K54_hiwJf3eTERo-bFx88m-nYLrRXP54tbyl2v0jGr6bqFYWegGcaCcajnyD8KY6TG11JZkwFJ9VFUp08rsb10y1R0"
-            alt="Modern plastic extrusion manufacturing facility"
+            src={heroImage}
+            alt="Xinrongplas contact banner for plastic extrusion machinery projects"
+            title="Xinrongplas contact banner for plastic extrusion machinery projects"
+            width="4134"
+            height="708"
+            loading="eager"
+            decoding="async"
           />
           <div className="contact-hero-overlay" />
           <div className="container contact-hero-copy">
@@ -144,7 +153,7 @@ export default async function ContactPage({ searchParams }) {
                 Fill out the form below and our technical engineers will respond
                 within 12 hours.
               </p>
-              <form className="contact-page-form" action="/api/inquiries" method="post">
+              <form id="form-contact-inquiry" className="contact-page-form" action="/api/inquiries" method="post">
                 <input name="source_page" type="hidden" value="/contact" />
                 {inquiryStatus === "sent" ? (
                   <p className="form-status">Inquiry received. We will reply soon.</p>
@@ -162,26 +171,7 @@ export default async function ContactPage({ searchParams }) {
                   Email Address *
                   <input name="email" placeholder="email@company.com" required type="email" />
                 </label>
-                <div className="contact-form-row">
-                  <label>
-                    Phone Number
-                    <input name="phone" placeholder="+1 (000) 000-0000" type="tel" />
-                  </label>
-                  <label>
-                    Country *
-                    <select name="country" required defaultValue="">
-                      <option value="" disabled>
-                        Select your country
-                      </option>
-                      <option value="United States">United States</option>
-                      <option value="Turkey">Turkey</option>
-                      <option value="Kazakhstan">Kazakhstan</option>
-                      <option value="Uzbekistan">Uzbekistan</option>
-                      <option value="India">India</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </label>
-                </div>
+                <ContactPhoneField />
                 <label>
                   Your Message *
                   <textarea
@@ -285,7 +275,7 @@ export default async function ContactPage({ searchParams }) {
               <a className="primary-button cta-secondary-button" href="#contact-form">
                 Get Quote Now
               </a>
-              <a className="ghost-button" href="/#products">
+              <a className="ghost-button" href="/products">
                 Download Catalog
               </a>
             </div>

@@ -2,14 +2,18 @@
 
 import { Download, Quote, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import ContactPhoneField from "../contact/ContactPhoneField";
 
 export default function ProductQuoteActions({ productTitle, sourcePage }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [status, setStatus] = useState(null);
 
   useEffect(() => {
     if (!isOpen) {
       return;
     }
+
+    setStatus(null);
 
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -25,6 +29,28 @@ export default function ProductQuoteActions({ productTitle, sourcePage }) {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setStatus("loading");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    formData.set("product_title", productTitle);
+    formData.set("source_page", sourcePage);
+
+    try {
+      const response = await fetch("/api/inquiries", {
+        method: "POST",
+        body: formData,
+      });
+
+      const url = new URL(response.url);
+      setStatus(url.searchParams.get("inquiry") === "sent" ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
+  }
 
   return (
     <>
@@ -70,37 +96,44 @@ export default function ProductQuoteActions({ productTitle, sourcePage }) {
                 with a tailored configuration and quotation.
               </p>
             </div>
-            <form className="quote-modal-form" action="/api/inquiries" method="post">
-              <input name="source_page" type="hidden" value={sourcePage} />
-              <label>
-                Full Name *
-                <input name="full_name" required type="text" />
-              </label>
-              <label>
-                Email Address *
-                <input name="email" required type="email" />
-              </label>
-              <label>
-                Phone Number *
-                <input name="phone" required type="tel" />
-              </label>
-              <label>
-                Country *
-                <input name="country" required type="text" />
-              </label>
-              <label>
-                Message *
-                <textarea
-                  name="message"
-                  required
-                  rows="4"
-                  defaultValue={`I am interested in the ${productTitle}.`}
-                />
-              </label>
-              <button className="primary-button form-button" type="submit">
-                Submit Inquiry
-              </button>
-            </form>
+            {status === "sent" ? (
+              <div className="form-status">Inquiry received. We will reply soon.</div>
+            ) : (
+              <form id="form-product-quote-modal" className="quote-modal-form" onSubmit={handleSubmit}>
+                <input name="source_page" type="hidden" value={sourcePage} />
+                <input name="product_title" type="hidden" value={productTitle} />
+                <label>
+                  Full Name *
+                  <input name="full_name" required type="text" />
+                </label>
+                <label>
+                  Email Address *
+                  <input name="email" required type="email" />
+                </label>
+                <ContactPhoneField />
+                <label>
+                  Message *
+                  <textarea
+                    name="message"
+                    required
+                    rows="4"
+                    defaultValue={`I am interested in the ${productTitle}.`}
+                  />
+                </label>
+                {status === "error" ? (
+                  <p className="form-status-error">
+                    Submission failed. Please try again or contact us directly.
+                  </p>
+                ) : null}
+                <button
+                  className="primary-button form-button"
+                  disabled={status === "loading"}
+                  type="submit"
+                >
+                  {status === "loading" ? "Sending..." : "Submit Inquiry"}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       ) : null}
