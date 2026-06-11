@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.env.*
+.git
+.next
+.claude
+.vscode
+directus/uploads
+node_modules
+postgres-data
