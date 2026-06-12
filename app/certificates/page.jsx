@@ -4,11 +4,10 @@ import {
   BadgeCheck,
   ChevronDown,
   FileCheck,
-  Languages,
   Menu,
-  Search,
   ShieldCheck,
 } from "lucide-react";
+import HeaderSearch from "../HeaderSearch";
 import { productNav } from "../../lib/content";
 
 export const metadata = {
@@ -139,12 +138,7 @@ function SiteHeader() {
           <NavLinks />
         </nav>
         <div className="header-actions">
-          <button className="icon-button" aria-label="Search">
-            <Search size={20} aria-hidden="true" />
-          </button>
-          <button className="icon-button" aria-label="Language">
-            <Languages size={20} aria-hidden="true" />
-          </button>
+          <HeaderSearch />
           <a className="quote-button" href="/contact">
             Get a Quote
           </a>

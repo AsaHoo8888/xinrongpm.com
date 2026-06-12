@@ -5,16 +5,15 @@ import {
   Factory,
   Globe2,
   HeartHandshake,
-  Languages,
   Lightbulb,
   Menu,
   MessageCircle,
   PlayCircle,
-  Search,
   ShieldCheck,
   Users,
   Wrench,
 } from "lucide-react";
+import HeaderSearch from "../HeaderSearch";
 import { productNav } from "../../lib/content";
 
 export const metadata = {
@@ -240,12 +239,7 @@ function SiteHeader() {
           <NavLinks />
         </nav>
         <div className="header-actions">
-          <button className="icon-button" aria-label="Search">
-            <Search size={20} aria-hidden="true" />
-          </button>
-          <button className="icon-button" aria-label="Language">
-            <Languages size={20} aria-hidden="true" />
-          </button>
+          <HeaderSearch />
           <a className="quote-button" href="/contact">
             Get a Quote
           </a>

@@ -3,18 +3,17 @@ import {
   Award,
   ChevronDown,
   Factory,
-  Languages,
   Lightbulb,
   Mail,
   MapPin,
   Menu,
   Phone,
   Ruler,
-  Search,
   ShieldCheck,
   Settings,
   Users,
 } from "lucide-react";
+import HeaderSearch from "./HeaderSearch";
 import ReviewCarousel from "./ReviewCarousel";
 import ContactPhoneField from "./contact/ContactPhoneField";
 import { getHomeContent } from "../lib/directus";
@@ -245,12 +244,7 @@ export default async function Home({ searchParams }) {
             <NavLinks />
           </nav>
           <div className="header-actions">
-            <button className="icon-button" aria-label="Search">
-              <Search size={20} aria-hidden="true" />
-            </button>
-            <button className="icon-button" aria-label="Language">
-              <Languages size={20} aria-hidden="true" />
-            </button>
+            <HeaderSearch />
             <a className="quote-button" href="/contact">
               Get a Quote
             </a>

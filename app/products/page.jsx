@@ -3,11 +3,10 @@ import {
   ChevronDown,
   ChevronRight,
   Factory,
-  Languages,
   Menu,
   Ruler,
-  Search,
 } from "lucide-react";
+import HeaderSearch from "../HeaderSearch";
 import { productNav } from "../../lib/content";
 import { products } from "./productData";
 
@@ -120,12 +119,7 @@ function SiteHeader() {
           <NavLinks />
         </nav>
         <div className="header-actions">
-          <button className="icon-button" aria-label="Search">
-            <Search size={20} aria-hidden="true" />
-          </button>
-          <button className="icon-button" aria-label="Language">
-            <Languages size={20} aria-hidden="true" />
-          </button>
+          <HeaderSearch />
           <a className="quote-button" href="/contact">
             Get a Quote
           </a>

@@ -3,15 +3,14 @@ import {
   CheckCircle,
   ChevronDown,
   Factory,
-  Languages,
   Mail,
   MapPin,
   Menu,
   Phone,
-  Search,
   Send,
   Clock,
 } from "lucide-react";
+import HeaderSearch from "../HeaderSearch";
 import { productNav } from "../../lib/content";
 import ContactPhoneField from "./ContactPhoneField";
 
@@ -23,6 +22,7 @@ export const metadata = {
 
 const heroImage =
   "/images/page-heroes/xinrongplas-about-banner-hero.jpg";
+const googleMapsUrl = "https://maps.app.goo.gl/jo9Q8oyiN8b6VSoq9";
 
 function slugify(value) {
   return value
@@ -92,12 +92,7 @@ function SiteHeader() {
           <NavLinks />
         </nav>
         <div className="header-actions">
-          <button className="icon-button" aria-label="Search">
-            <Search size={20} aria-hidden="true" />
-          </button>
-          <button className="icon-button" aria-label="Language">
-            <Languages size={20} aria-hidden="true" />
-          </button>
+          <HeaderSearch />
           <a className="quote-button" href="/contact">
             Request Quote
           </a>
@@ -258,7 +253,7 @@ export default async function ContactPage({ searchParams }) {
             <Factory size={40} aria-hidden="true" />
             <h3>Xinrongplas Factory</h3>
             <p>60,000 sqm Advanced Production Workshop</p>
-            <a href="https://maps.google.com" target="_blank" rel="noreferrer">
+            <a href={googleMapsUrl} target="_blank" rel="noreferrer">
               Open in Google Maps <ArrowRight size={16} aria-hidden="true" />
             </a>
           </div>

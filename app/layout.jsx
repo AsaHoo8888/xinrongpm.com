@@ -1,4 +1,5 @@
 import "./globals.css";
+import FloatingContact from "./FloatingContact";
 import SiteFooter from "./SiteFooter";
 
 export const metadata = {
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
+        <FloatingContact />
         <SiteFooter />
       </body>
     </html>
