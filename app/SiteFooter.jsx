@@ -82,13 +82,39 @@ export default function SiteFooter() {
 
         <div className="footer-form-column">
           <h2>Quick Contact</h2>
-          <form id="form-footer-quick-contact" action="/api/inquiries" method="post">
+          <form
+            id="form-footer-quick-contact"
+            className="grid gap-3"
+            action="/api/inquiries"
+            method="post"
+          >
             <input name="source_page" type="hidden" value="/contact" />
-            <input name="full_name" placeholder="Name" required type="text" />
-            <input name="email" placeholder="Email" required type="email" />
+            <input
+              className="h-11 rounded border border-white/15 bg-brand-blue px-4 text-sm text-white outline-none placeholder:text-white/60 focus:ring-2 focus:ring-brand-green"
+              name="full_name"
+              placeholder="Name"
+              required
+              type="text"
+            />
+            <input
+              className="h-11 rounded border border-white/15 bg-brand-blue px-4 text-sm text-white outline-none placeholder:text-white/60 focus:ring-2 focus:ring-brand-green"
+              name="email"
+              placeholder="Email"
+              required
+              type="email"
+            />
             <ContactPhoneField label="" phonePlaceholder="Phone" required={false} />
-            <textarea name="message" placeholder="Message" required rows="3" />
-            <button type="submit">
+            <textarea
+              className="min-h-24 resize-y rounded border border-white/15 bg-brand-blue px-4 py-3 text-sm text-white outline-none placeholder:text-white/60 focus:ring-2 focus:ring-brand-green"
+              name="message"
+              placeholder="Message"
+              required
+              rows="3"
+            />
+            <button
+              className="inline-flex h-11 items-center justify-center gap-2 rounded bg-brand-green px-5 text-sm font-bold uppercase tracking-normal text-white transition hover:bg-[#4e9a26] focus:outline-none focus:ring-2 focus:ring-brand-green/40 focus:ring-offset-2 focus:ring-offset-brand-deep"
+              type="submit"
+            >
               Send Inquiry <Send size={16} aria-hidden="true" />
             </button>
           </form>

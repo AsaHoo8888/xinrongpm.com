@@ -97,23 +97,40 @@ export default function ProductQuoteActions({ productTitle, sourcePage }) {
               </p>
             </div>
             {status === "sent" ? (
-              <div className="form-status">Inquiry received. We will reply soon.</div>
+              <div className="rounded border border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold text-green-800">
+                Inquiry received. We will reply soon.
+              </div>
             ) : (
-              <form id="form-product-quote-modal" className="quote-modal-form" onSubmit={handleSubmit}>
+              <form
+                id="form-product-quote-modal"
+                className="quote-modal-form grid gap-4"
+                onSubmit={handleSubmit}
+              >
                 <input name="source_page" type="hidden" value={sourcePage} />
                 <input name="product_title" type="hidden" value={productTitle} />
-                <label>
+                <label className="grid gap-2 text-sm font-semibold text-ink">
                   Full Name *
-                  <input name="full_name" required type="text" />
+                  <input
+                    className="h-12 rounded border border-slate-300 bg-white px-4 text-base font-normal text-ink outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+                    name="full_name"
+                    required
+                    type="text"
+                  />
                 </label>
-                <label>
+                <label className="grid gap-2 text-sm font-semibold text-ink">
                   Email Address *
-                  <input name="email" required type="email" />
+                  <input
+                    className="h-12 rounded border border-slate-300 bg-white px-4 text-base font-normal text-ink outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+                    name="email"
+                    required
+                    type="email"
+                  />
                 </label>
                 <ContactPhoneField />
-                <label>
+                <label className="grid gap-2 text-sm font-semibold text-ink">
                   Message *
                   <textarea
+                    className="min-h-32 resize-y rounded border border-slate-300 bg-white px-4 py-3 text-base font-normal text-ink outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
                     name="message"
                     required
                     rows="4"
@@ -121,12 +138,12 @@ export default function ProductQuoteActions({ productTitle, sourcePage }) {
                   />
                 </label>
                 {status === "error" ? (
-                  <p className="form-status-error">
+                  <p className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
                     Submission failed. Please try again or contact us directly.
                   </p>
                 ) : null}
                 <button
-                  className="primary-button form-button"
+                  className="inline-flex h-12 items-center justify-center rounded bg-brand-blue px-6 text-sm font-bold uppercase tracking-normal text-white transition hover:bg-brand-deep focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
                   disabled={status === "loading"}
                   type="submit"
                 >

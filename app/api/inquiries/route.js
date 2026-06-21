@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createInquiry } from "../../../lib/directus";
+import { createPostgresInquiry } from "../../../lib/postgres";
 
 function getFormValue(form, key) {
   const value = form.get(key);
@@ -33,7 +33,7 @@ export async function POST(request) {
     submitted_at: new Date().toISOString(),
   };
 
-  const result = await createInquiry(fields);
+  const result = await createPostgresInquiry(fields);
   const status = result.ok ? "sent" : "error";
   const sourcePage =
     typeof fields.source_page === "string" && fields.source_page.startsWith("/")

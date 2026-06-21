@@ -21,15 +21,15 @@ const imageSizes = {
 };
 
 const ranges = {
-  "pe-pipe-extrusion-line": "OD 16 - 2000 mm",
-  "pvc-pipe-extrusion-line": "OD 16 - 1000 mm",
-  "pvc-o-pipe-extrusion-line": "OD 90 - 630 mm, PN5 - 25",
-  "ppr-pipe-extrusion-line": "OD 16 - 160 mm",
-  "double-wall-corrugated-pipe-extrusion-line": "OD 63 - 1200 mm",
-  "pe-hollow-wall-winding-pipe-extrusion-line": "OD 200 - 3000 mm",
-  "pex-al-pex-pipe-machine": "OD 16 - 63 mm",
-  "rtp-tcp-pipe-production-line": "OD 50 - 630 mm",
-  "automatic-pipe-drilling-slotting-machine": "OD 50 - 630 mm",
+  "pe-pipe-extrusion-line": "Ø 16 - 2000 mm",
+  "pvc-pipe-extrusion-line": "Ø 16 - 1000 mm",
+  "pvc-o-pipe-extrusion-line": "Ø 90 - 630 mm, PN5 - 25",
+  "ppr-pipe-extrusion-line": "Ø 16 - 160 mm",
+  "double-wall-corrugated-pipe-extrusion-line": "Ø 63 - 1200 mm",
+  "pe-hollow-wall-winding-pipe-extrusion-line": "Ø 200 - 3000 mm",
+  "pex-al-pex-pipe-machine": "Ø 16 - 63 mm",
+  "rtp-tcp-pipe-production-line": "Ø 50 - 630 mm",
+  "automatic-pipe-drilling-slotting-machine": "Ø 50 - 630 mm",
 };
 
 function slugify(value) {

@@ -175,6 +175,7 @@ function ProductCard({ product, heroImage }) {
   const hoverImage = product.hoverImage;
   const imageAlt = product.imageAlt || `${productName} plastic pipe extrusion machine`;
   const hoverImageAlt = product.hoverImageAlt || `${productName} final pipe product`;
+  const range = (product.range || product.diameter_range || "").replace(/^OD\b/, "Ø");
 
   return (
     <article
@@ -214,7 +215,7 @@ function ProductCard({ product, heroImage }) {
         <div className="range-row">
           <Ruler size={16} aria-hidden="true" />
           <span>
-            Range: <strong>{product.range || product.diameter_range}</strong>
+            Range: <strong>{range}</strong>
           </span>
         </div>
         <a href={productHref(productName)} className="text-link" itemProp="url">
@@ -325,7 +326,7 @@ export default async function Home({ searchParams }) {
           <div className="about-overlay" />
           <div className="container about-content">
             <span className="eyebrow">Jiangsu Xinrongplas Machinery Co., Ltd</span>
-            <h2>60,000 sqm factory scale with 200+ experienced staff</h2>
+            <h2>60,000 sqm factory scale with 150+ experienced staff</h2>
             <p>
               From extrusion line planning to long-term after-sale service, Xinrong
               helps manufacturers build stable, efficient pipe production systems.
@@ -339,7 +340,7 @@ export default async function Home({ searchParams }) {
         <section className="section service-section" id="services">
           <div className="container">
             <div className="home-service-heading">
-              <h2>Our Service Excellence</h2>
+              <h2>Our Excellence in Service</h2>
               <p>
                 A seamless lifecycle commitment from initial consultation to
                 long-term operational success.
@@ -394,29 +395,54 @@ export default async function Home({ searchParams }) {
                 </span>
               </div>
             </div>
-            <form id="form-home-inquiry" className="inquiry-form" action="/api/inquiries" method="post">
+            <form
+              id="form-home-inquiry"
+              className="inquiry-form grid gap-5"
+              action="/api/inquiries"
+              method="post"
+            >
               {inquiryStatus === "sent" ? (
-                <p className="form-status">Inquiry received. We will reply soon.</p>
+                <p className="rounded border border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold text-green-800">
+                  Inquiry received. We will reply soon.
+                </p>
               ) : null}
               {inquiryStatus === "error" ? (
-                <p className="form-status form-status-error">
+                <p className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
                   Inquiry could not be saved to Directus. Please check the API token.
                 </p>
               ) : null}
-              <label>
+              <label className="grid gap-2 text-sm font-semibold text-ink">
                 Full Name *
-                <input name="full_name" required type="text" />
+                <input
+                  className="h-12 rounded border border-slate-300 bg-white px-4 text-base font-normal text-ink outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+                  name="full_name"
+                  required
+                  type="text"
+                />
               </label>
-              <label>
+              <label className="grid gap-2 text-sm font-semibold text-ink">
                 Email Address *
-                <input name="email" required type="email" />
+                <input
+                  className="h-12 rounded border border-slate-300 bg-white px-4 text-base font-normal text-ink outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+                  name="email"
+                  required
+                  type="email"
+                />
               </label>
               <ContactPhoneField />
-              <label>
+              <label className="grid gap-2 text-sm font-semibold text-ink">
                 Message *
-                <textarea name="message" required rows="4" />
+                <textarea
+                  className="min-h-32 resize-y rounded border border-slate-300 bg-white px-4 py-3 text-base font-normal text-ink outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+                  name="message"
+                  required
+                  rows="4"
+                />
               </label>
-              <button className="primary-button form-button" type="submit">
+              <button
+                className="inline-flex h-12 items-center justify-center gap-2 rounded bg-brand-blue px-6 text-sm font-bold uppercase tracking-normal text-white transition hover:bg-brand-deep focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:ring-offset-2"
+                type="submit"
+              >
                 Submit Inquiry <ArrowRight size={18} aria-hidden="true" />
               </button>
             </form>

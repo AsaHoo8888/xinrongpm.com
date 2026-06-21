@@ -2,9 +2,9 @@ export const products = {
   "pe-pipe-extrusion-line": {
     title: "PE Pipe Extrusion Line",
     description:
-      "PE pipe extrusion machine for OD 16-2000mm water, gas, drainage, conduit, PP, PPR, PERT, PB and PEX-B pipe production.",
+      "PE pipe extrusion machine for Ø 16-2000mm water, gas, drainage, conduit, PP, PPR, PERT, PB and PEX-B pipe production.",
     paragraphs: [
-      "Our PE pipe extrusion machine can produce PE size range from OD 16 to OD 2000mm.",
+      "Our PE pipe extrusion machine can produce PE size range from Ø 16 to Ø 2000mm.",
       "PE pipes can be used for water supply, gas supply, water drainage, liquid transportation, electric conduit, etc.",
       "Our PE pipe extrusion machine can process different kinds of PO materials: PP, PPR, PERT, PB, PEX-B, etc.",
       "We can provide different PE pipe extrusion lines: normal or high speed, single or multi-layer, single or double strand.",
@@ -50,9 +50,9 @@ export const products = {
   "pvc-pipe-extrusion-line": {
     title: "PVC Pipe Extrusion Line",
     description:
-      "PVC pipe extrusion machine for OD 16-1000mm UPVC, CPVC, PVC-O and PVC-M pipe production.",
+      "PVC pipe extrusion machine for Ø 16-1000mm UPVC, CPVC, PVC-O and PVC-M pipe production.",
     paragraphs: [
-      "Our PVC pipe extrusion machine can produce PVC pipe size range from OD 16 to OD 1000mm.",
+      "Our PVC pipe extrusion machine can produce PVC pipe size range from Ø 16 to Ø 1000mm.",
       "PVC pipes can be used for water supply, water drainage, liquid transportation, electric conduit, etc.",
       "We have different kinds of PVC pipe making machine to produce different kinds of PVC pipes: UPVC pipe, CPVC pipe, PVC-O pipe, PVC-M pipe, etc.",
       "We can provide different PVC pipe extrusion lines: normal or high speed, single or multi-layer, single or double strand.",
@@ -78,24 +78,24 @@ export const products = {
     ],
     specHeaders: ["Model", "Pipe Range (mm)", "Output Capacity (kg/h)", "Main Motor Power (kW)"],
     specs: [
-      ["PVC32SS*", "(OD16 - 32) x 4", "180 - 250", "22 - 37"],
-      ["PVC63", "OD16 - 63", "180 - 250", "22 - 37"],
-      ["PVC63S*", "(OD16 - 63) x 2", "250 - 450", "37 - 55"],
-      ["PVC110", "OD20 - 110", "250 - 450", "37 - 55"],
-      ["PVC160", "OD50 - 160", "250 - 450", "37 - 55"],
-      ["PVC250", "OD75 - 250", "450 - 750", "55 - 75"],
-      ["PVC450", "OD110 - 450", "450 - 1000", "55 - 110"],
-      ["PVC630", "OD250 - 630", "800 - 1200", "110 - 132"],
-      ["PVC800", "OD315 - 800", "1200 - 1300", "132 - 160"],
-      ["PVC1000", "OD400 - 1000", "1300", "160"],
+      ["PVC32SS*", "(Ø16 - 32) x 4", "180 - 250", "22 - 37"],
+      ["PVC63", "Ø16 - 63", "180 - 250", "22 - 37"],
+      ["PVC63S*", "(Ø16 - 63) x 2", "250 - 450", "37 - 55"],
+      ["PVC110", "Ø20 - 110", "250 - 450", "37 - 55"],
+      ["PVC160", "Ø50 - 160", "250 - 450", "37 - 55"],
+      ["PVC250", "Ø75 - 250", "450 - 750", "55 - 75"],
+      ["PVC450", "Ø110 - 450", "450 - 1000", "55 - 110"],
+      ["PVC630", "Ø250 - 630", "800 - 1200", "110 - 132"],
+      ["PVC800", "Ø315 - 800", "1200 - 1300", "132 - 160"],
+      ["PVC1000", "Ø400 - 1000", "1300", "160"],
     ],
   },
   "pvc-o-pipe-extrusion-line": {
     title: "PVC-O Pipe Extrusion Line",
     description:
-      "PVC-O pipe extrusion machine for OD 90-630mm, PN5-25 and material class 315-500.",
+      "PVC-O pipe extrusion machine for Ø 90-630mm, PN5-25 and material class 315-500.",
     paragraphs: [
-      "Our PVC-O pipe extrusion machine can produce PVC-O pipe size range from OD90 to OD630mm for PN5 to 25, and Material Class 315 to 500.",
+      "Our PVC-O pipe extrusion machine can produce PVC-O pipe size range from Ø90 to Ø630mm for PN5 to 25, and Material Class 315 to 500.",
       "PVC-O pipe, biaxially oriented polyvinyl chloride pipe, can be used for water supply, mining, gas supply, etc.",
       "We use one step forming method to produce PVC-O pipe which has advantage of less space, low electricity and labour cost, less material waste.",
       "We can provide turnkey solution with auxiliary machinery such as mixer, shredder, crusher and pulverizer, etc.",
@@ -106,7 +106,7 @@ export const products = {
       "/images/products/pvc-o-pipe-extrusion-line/pvc-o-pipe-extrusion-line-setup.jpg",
       "/images/products/pvc-o-pipe-extrusion-line/pvc-o-pipe-biaxial-orientation-production.jpg",
     ],
-    videoId: null,
+    videoId: "YWr8hySZqqw",
     features: [
       "This is another equipment independently developed by our company for 8 years.",
       "Real-time feedback of important data on pipe production makes it easy to adjust pipe production process.",
@@ -125,7 +125,7 @@ export const products = {
   },
   "ppr-pipe-extrusion-line": {
     title: "PPR Pipe Extrusion Line",
-    description: "PPR pipe machine for OD 16-160mm cold and hot water supply pipe production.",
+    description: "PPR pipe machine for Ø 16-160mm cold and hot water supply pipe production.",
     paragraphs: [
       "Our PPR pipe machine can produce PPR size range from 16 to 160mm. However, our machine can produce bigger size if required.",
       "PPR pipe is mainly used for cold water and hot water supply.",
@@ -158,9 +158,9 @@ export const products = {
   },
   "double-wall-corrugated-pipe-extrusion-line": {
     title: "Double Wall Corrugated Pipe Extrusion Line",
-    description: "Double wall corrugated pipe extrusion machine for OD 63-1200mm drainage and ventilation pipe.",
+    description: "Double wall corrugated pipe extrusion machine for Ø 63-1200mm drainage and ventilation pipe.",
     paragraphs: [
-      "Our double wall corrugated pipe extrusion machine can produce pipe size range from OD63-1200mm.",
+      "Our double wall corrugated pipe extrusion machine can produce pipe size range from Ø63-1200mm.",
       "Double wall corrugated pipe is mainly used for water drainage and ventilation.",
       "Usually, double wall corrugated pipe is PE material. But changing extruder type can produce PVC double wall corrugated pipe.",
       "We have two different types of corrugated pipe machine for your choice: horizontal type and vertical type.",
@@ -196,9 +196,9 @@ export const products = {
   },
   "pe-hollow-wall-winding-pipe-extrusion-line": {
     title: "PE Hollow Wall Winding Pipe Extrusion Line",
-    description: "PE hollow wall winding pipe extrusion machine for OD 200-3000mm drainage pipe production.",
+    description: "PE hollow wall winding pipe extrusion machine for Ø 200-3000mm drainage pipe production.",
     paragraphs: [
-      "Our PE hollow wall winding pipe extrusion machine can produce pipe size range from OD200-3000mm.",
+      "Our PE hollow wall winding pipe extrusion machine can produce pipe size range from Ø200-3000mm.",
       "We are one of the drafters of nation standard for hollow wall winding pipe.",
       "PE hollow wall winding pipe is mainly used for water drainage, same as double wall corrugated pipe.",
       "Compared with double wall corrugated pipe, it has advantages of low machine investment cost and larger pipe diameter.",
@@ -231,9 +231,9 @@ export const products = {
   },
   "pex-al-pex-pipe-machine": {
     title: "PEX-AL-PEX Pipe Machine",
-    description: "PEX-AL-PEX composite pipe extrusion line for OD 16-63mm five-layer pipe production.",
+    description: "PEX-AL-PEX composite pipe extrusion line for Ø 16-63mm five-layer pipe production.",
     paragraphs: [
-      "Our PEX-AL-PEX composite pipe extrusion line produce pipe size range from OD16-63mm.",
+      "Our PEX-AL-PEX composite pipe extrusion line produce pipe size range from Ø16-63mm.",
       "This pipe is five layer structure: plastic layer, adhesive layer, aluminum layer, adhesive layer and plastic layer.",
       "The aluminum layer is formed by ultrasonic overlap welding.",
       "Our machine can form five layer in one step, to save machine space and increase stability. Production yield can reach 98%, and line speed is also higher.",
@@ -263,9 +263,9 @@ export const products = {
   },
   "rtp-tcp-pipe-production-line": {
     title: "RTP/TCP Pipe Production Line",
-    description: "RTP/TCP pipe production line for OD 50-630mm high-pressure reinforced thermoplastic pipe.",
+    description: "RTP/TCP pipe production line for Ø 50-630mm high-pressure reinforced thermoplastic pipe.",
     paragraphs: [
-      "Our RTP/TCP pipe production line can produce pipe size range from OD50-630mm.",
+      "Our RTP/TCP pipe production line can produce pipe size range from Ø50-630mm.",
       "The RTP, thermoplastic reinforced pipe, and TCP, thermoplastic composite pipe, are mainly used as high pressure and non-metallic pipes for oil and gas industries.",
       "They can also be used for water supply and district heating.",
       "Compared with other kinds of high pressure pipes, RTP/TCP has advantage of easy installation and connection, more flexibility, long service life, low cost and reliability.",
@@ -298,9 +298,9 @@ export const products = {
   },
   "automatic-pipe-drilling-slotting-machine": {
     title: "Automatic Pipe Drilling/Slotting Machine",
-    description: "Automatic pipe drilling and slotting machine for OD 50-630mm pipes.",
+    description: "Automatic pipe drilling and slotting machine for Ø 50-630mm pipes.",
     paragraphs: [
-      "Our pipe drilling/slotting machine can produce pipe size range from OD50-630mm.",
+      "Our pipe drilling/slotting machine can produce pipe size range from Ø50-630mm.",
       "The machine can drill or slot on pipe surface fully automatically.",
       "The pipe are mainly used for water well, water pollution remove, water collection and filtration.",
       "The whole machine is controlled by PLC and servo control system, with high automation, stable and reliable, lower power consumption, suitable for different pipe diameter and length.",

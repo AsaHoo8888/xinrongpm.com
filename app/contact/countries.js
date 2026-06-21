@@ -253,6 +253,7 @@ const countryRows = [
 export const countries = countryRows.map(([iso, label, code]) => ({
   code,
   flag: countryFlag(iso),
+  iso,
   label,
   value: label,
 }));

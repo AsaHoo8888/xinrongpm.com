@@ -148,38 +148,61 @@ export default async function ContactPage({ searchParams }) {
                 Fill out the form below and our technical engineers will respond
                 within 12 hours.
               </p>
-              <form id="form-contact-inquiry" className="contact-page-form" action="/api/inquiries" method="post">
+              <form
+                id="form-contact-inquiry"
+                className="grid gap-5"
+                action="/api/inquiries"
+                method="post"
+              >
                 <input name="source_page" type="hidden" value="/contact" />
                 {inquiryStatus === "sent" ? (
-                  <p className="form-status">Inquiry received. We will reply soon.</p>
+                  <p className="rounded border border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold text-green-800">
+                    Inquiry received. We will reply soon.
+                  </p>
                 ) : null}
                 {inquiryStatus === "error" ? (
-                  <p className="form-status form-status-error">
+                  <p className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
                     Inquiry could not be saved to Directus. Please check the API token.
                   </p>
                 ) : null}
-                <label>
+                <label className="grid gap-2 text-sm font-semibold text-ink">
                   Full Name *
-                  <input name="full_name" placeholder="John Doe" required type="text" />
+                  <input
+                    className="h-12 rounded border border-slate-300 bg-white px-4 text-base font-normal text-ink outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+                    name="full_name"
+                    placeholder="John Doe"
+                    required
+                    type="text"
+                  />
                 </label>
-                <label>
+                <label className="grid gap-2 text-sm font-semibold text-ink">
                   Email Address *
-                  <input name="email" placeholder="email@company.com" required type="email" />
+                  <input
+                    className="h-12 rounded border border-slate-300 bg-white px-4 text-base font-normal text-ink outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
+                    name="email"
+                    placeholder="email@company.com"
+                    required
+                    type="email"
+                  />
                 </label>
                 <ContactPhoneField />
-                <label>
+                <label className="grid gap-2 text-sm font-semibold text-ink">
                   Your Message *
                   <textarea
+                    className="min-h-32 resize-y rounded border border-slate-300 bg-white px-4 py-3 text-base font-normal text-ink outline-none transition focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20"
                     name="message"
                     placeholder="Please describe your requirements, such as pipe diameter, capacity, and material type."
                     required
                     rows="5"
                   />
                 </label>
-                <button className="contact-submit-button" type="submit">
+                <button
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded bg-brand-blue px-6 text-sm font-bold uppercase tracking-normal text-white transition hover:bg-brand-deep focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:ring-offset-2"
+                  type="submit"
+                >
                   Send Inquiry <Send size={18} aria-hidden="true" />
                 </button>
-                <small>
+                <small className="text-sm leading-6 text-ink-soft">
                   Your information is secure and will only be used for technical
                   consultation.
                 </small>
