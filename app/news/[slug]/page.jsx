@@ -42,24 +42,23 @@ function NavLinks() {
           ))}
         </div>
       </div>
-      <a className="nav-link" href="/services">
-        Services
-      </a>
-      <a className="nav-link" href="/certificates">
-        Certificates
-      </a>
-      <a className="nav-link nav-link-active" href="/news">
-        News
-      </a>
       <a className="nav-link" href="/video">
         Video
       </a>
       <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/about">
-        About
-      </a>
+      <div className="nav-dropdown">
+        <a className="nav-link nav-link-active dropdown-trigger" href="/about">
+          About <ChevronDown size={14} aria-hidden="true" />
+        </a>
+        <div className="dropdown-panel">
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/certificates">Certificates</a>
+          <a href="/news">News</a>
+        </div>
+      </div>
       <a className="nav-link" href="/contact">
         Contact
       </a>
@@ -100,6 +99,36 @@ function SiteHeader() {
 }
 
 function ArticleBlock({ block }) {
+  if (block.type === "heading") {
+    return <h2 className="single-post-subheading">{block.text}</h2>;
+  }
+
+  if (block.type === "image") {
+    return (
+      <figure className="single-post-figure">
+        <img
+          src={block.src}
+          alt={block.alt}
+          title={block.alt}
+          width="1600"
+          height="900"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    );
+  }
+
+  if (block.type === "list") {
+    return (
+      <ul className="single-post-list">
+        {block.items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    );
+  }
+
   if (block.type === "table") {
     return (
       <div className="single-post-table-wrap">

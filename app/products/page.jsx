@@ -23,13 +23,19 @@ const imageSizes = {
 const ranges = {
   "pe-pipe-extrusion-line": "Ø 16 - 2000 mm",
   "pvc-pipe-extrusion-line": "Ø 16 - 1000 mm",
-  "pvc-o-pipe-extrusion-line": "Ø 90 - 630 mm, PN5 - 25",
+  "pvc-o-pipe-extrusion-line": "Ø 90 - 630 mm",
   "ppr-pipe-extrusion-line": "Ø 16 - 160 mm",
   "double-wall-corrugated-pipe-extrusion-line": "Ø 63 - 1200 mm",
   "pe-hollow-wall-winding-pipe-extrusion-line": "Ø 200 - 3000 mm",
   "pex-al-pex-pipe-machine": "Ø 16 - 63 mm",
   "rtp-tcp-pipe-production-line": "Ø 50 - 630 mm",
   "automatic-pipe-drilling-slotting-machine": "Ø 50 - 630 mm",
+};
+
+const categoryLabels = {
+  "pex-al-pex-pipe-machine": "Composite Pipe Production Machinery",
+  "rtp-tcp-pipe-production-line": "Composite Pipe Production Machinery",
+  "automatic-pipe-drilling-slotting-machine": "Pipe Post-Processing Machinery",
 };
 
 function slugify(value) {
@@ -80,24 +86,23 @@ function NavLinks() {
           ))}
         </div>
       </div>
-      <a className="nav-link" href="/services">
-        Services
-      </a>
-      <a className="nav-link" href="/certificates">
-        Certificates
-      </a>
-      <a className="nav-link" href="/news">
-        News
-      </a>
       <a className="nav-link" href="/video">
         Video
       </a>
       <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/about">
-        About
-      </a>
+      <div className="nav-dropdown">
+        <a className="nav-link dropdown-trigger" href="/about">
+          About <ChevronDown size={14} aria-hidden="true" />
+        </a>
+        <div className="dropdown-panel">
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/certificates">Certificates</a>
+          <a href="/news">News</a>
+        </div>
+      </div>
       <a className="nav-link" href="/contact">
         Contact
       </a>
@@ -163,6 +168,7 @@ export default function ProductsPage() {
           <div className="container products-center-grid">
             {productCards.map(({ slug, title, description, image, range, imageSize }) => {
               const alt = `Xinrongplas ${title} machinery`;
+              const categoryLabel = categoryLabels[slug] || "Pipe Extrusion Machinery";
 
               return (
                 <article className="products-center-card" key={slug} itemScope itemType="https://schema.org/Product">
@@ -181,7 +187,7 @@ export default function ProductsPage() {
                   <div className="products-center-body">
                     <span className="products-center-tag">
                       <Factory size={15} aria-hidden="true" />
-                      Pipe Extrusion Machinery
+                      {categoryLabel}
                     </span>
                     <h2 itemProp="name">{title}</h2>
                     <p itemProp="description">{description}</p>
@@ -211,7 +217,7 @@ export default function ProductsPage() {
               configuration for your production project.
             </p>
             <a className="primary-button" href="/contact">
-              Consult an Engineer <ArrowRight size={18} aria-hidden="true" />
+              Consult With Us <ArrowRight size={18} aria-hidden="true" />
             </a>
           </div>
         </section>

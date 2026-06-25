@@ -1,6 +1,4 @@
 import {
-  ArrowRight,
-  Award,
   BadgeCheck,
   ChevronDown,
   FileCheck,
@@ -8,12 +6,14 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import HeaderSearch from "../HeaderSearch";
+import CertificateGallery from "./CertificateGallery";
+import ProductQuoteActions from "../products/ProductQuoteActions";
 import { productNav } from "../../lib/content";
 
 export const metadata = {
   title: "Certificates & Honors | Xinrongplas Machinery",
   description:
-    "View Xinrongplas Machinery certificates and honors, including High-tech Enterprise, ISO 9001, SGS, CE certification, and patent certificates.",
+    "View Xinrongplas Machinery certificates and honors, including High-tech Enterprise, ISO 9001, SGS, CE certificate, and patent certificates.",
 };
 
 const certificates = [
@@ -42,7 +42,7 @@ const certificates = [
     height: 2552,
   },
   {
-    title: "CE Certification",
+    title: "CE Certificate",
     category: "Compliance",
     image: "/images/certificates/xinrongplas-ce-certification.jpg",
     alt: "Xinrongplas CE certification for plastic pipe extrusion machinery",
@@ -53,12 +53,24 @@ const certificates = [
     const number = String(index + 1).padStart(2, "0");
 
     return {
-      title: `Patent ${number}`,
-      category: "Innovation",
+      title: "Certificate",
+      category: "PATENT",
       image: `/images/certificates/xinrongplas-patent-certificate-${number}.jpg`,
       alt: `Xinrongplas patent certificate ${number} for plastic extrusion machinery`,
       width: index === 0 ? 1800 : 1810,
       height: 2560,
+    };
+  }),
+  ...Array.from({ length: 6 }, (_, index) => {
+    const number = String(index + 1).padStart(2, "0");
+
+    return {
+      title: "Certificate",
+      category: "SOFTWARE COPYRIGHT",
+      image: `/images/certificates/xinrongplas-software-copyright-certificate-${number}.png`,
+      alt: `Xinrongplas software copyright certificate ${number}`,
+      width: 1182,
+      height: 1600,
     };
   }),
 ];
@@ -99,24 +111,23 @@ function NavLinks() {
           ))}
         </div>
       </div>
-      <a className="nav-link" href="/services">
-        Services
-      </a>
-      <a className="nav-link nav-link-active" href="/certificates">
-        Certificates
-      </a>
-      <a className="nav-link" href="/news">
-        News
-      </a>
       <a className="nav-link" href="/video">
         Video
       </a>
       <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/about">
-        About
-      </a>
+      <div className="nav-dropdown">
+        <a className="nav-link nav-link-active dropdown-trigger" href="/about">
+          About <ChevronDown size={14} aria-hidden="true" />
+        </a>
+        <div className="dropdown-panel">
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/certificates">Certificates</a>
+          <a href="/news">News</a>
+        </div>
+      </div>
       <a className="nav-link" href="/contact">
         Contact
       </a>
@@ -163,19 +174,11 @@ export default function CertificatesPage() {
       <main className="certificates-page-main">
         <section className="certificates-hero">
           <div className="container certificates-hero-copy">
-            <span>
-              <Award size={18} aria-hidden="true" />
-              Quality First, Innovation as the Soul
-            </span>
             <h1>Certificates & Honors</h1>
             <p>
-              Since 1996, Xinrongplas Machinery has been committed to excellent
-              high-end plastic extrusion solutions for global customers.
+              Since our founding in 1996, we have insisted on quality first
+              while recognizing innovation as our soul.
             </p>
-            <div>
-              <strong>28 Years of Expertise</strong>
-              <strong>50+ National Patents</strong>
-            </div>
           </div>
         </section>
 
@@ -185,27 +188,7 @@ export default function CertificatesPage() {
               <span />
               <h2>Corporate Qualifications</h2>
             </div>
-            <div className="certificate-grid">
-              {certificates.map(({ title, category, image, alt, width, height }) => (
-                <article className="certificate-card" key={`${title}-${image}`}>
-                  <a href={image} target="_blank" rel="noreferrer" aria-label={`Open ${title}`}>
-                    <img
-                      src={image}
-                      alt={alt}
-                      title={alt}
-                      width={width}
-                      height={height}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </a>
-                  <div>
-                    <small>{category}</small>
-                    <h3>{title}</h3>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <CertificateGallery certificates={certificates} />
           </div>
         </section>
 
@@ -226,8 +209,8 @@ export default function CertificatesPage() {
               <BadgeCheck size={38} aria-hidden="true" />
               <h2>Certified Manufacturing for Reliable Pipe Extrusion Projects</h2>
               <p>
-                Share your production requirements and our engineering team will
-                recommend a suitable certified extrusion line configuration.
+                Share your requirements and our engineering team will recommend
+                a suitable and professional extrusion line configuration.
               </p>
             </div>
             <div>
@@ -237,9 +220,12 @@ export default function CertificatesPage() {
               <span>
                 <FileCheck size={18} aria-hidden="true" /> Certificate images available for review
               </span>
-              <a className="primary-button" href="/contact">
-                Get a Quote <ArrowRight size={18} aria-hidden="true" />
-              </a>
+              <ProductQuoteActions
+                buttonLabel="Get a Quote"
+                productTitle="Certificates & Honors"
+                showCatalog={false}
+                sourcePage="/certificates"
+              />
             </div>
           </div>
         </section>

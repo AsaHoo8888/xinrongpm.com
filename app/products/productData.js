@@ -2,7 +2,7 @@ export const products = {
   "pe-pipe-extrusion-line": {
     title: "PE Pipe Extrusion Line",
     description:
-      "PE pipe extrusion machine for Ø 16-2000mm water, gas, drainage, conduit, PP, PPR, PERT, PB and PEX-B pipe production.",
+      "PE pipe extrusion machine for size range Ø16-2000mm, application: water, gas, drainage, conduit, etc. Can also produce pipe in other PO materials (PP, PPR, PERT, PB and PEX-B).",
     paragraphs: [
       "Our PE pipe extrusion machine can produce PE size range from Ø 16 to Ø 2000mm.",
       "PE pipes can be used for water supply, gas supply, water drainage, liquid transportation, electric conduit, etc.",
@@ -50,7 +50,7 @@ export const products = {
   "pvc-pipe-extrusion-line": {
     title: "PVC Pipe Extrusion Line",
     description:
-      "PVC pipe extrusion machine for Ø 16-1000mm UPVC, CPVC, PVC-O and PVC-M pipe production.",
+      "PVC pipe extrusion machine for Ø 16-1000mm UPVC, CPVC and PVC-M pipe production.",
     paragraphs: [
       "Our PVC pipe extrusion machine can produce PVC pipe size range from Ø 16 to Ø 1000mm.",
       "PVC pipes can be used for water supply, water drainage, liquid transportation, electric conduit, etc.",
@@ -94,6 +94,7 @@ export const products = {
     title: "PVC-O Pipe Extrusion Line",
     description:
       "PVC-O pipe extrusion machine for Ø 90-630mm, PN5-25 and material class 315-500.",
+    catalogHref: "/downloads/xinrongplas-pvc-o-pipe-extrusion-line.pdf",
     paragraphs: [
       "Our PVC-O pipe extrusion machine can produce PVC-O pipe size range from Ø90 to Ø630mm for PN5 to 25, and Material Class 315 to 500.",
       "PVC-O pipe, biaxially oriented polyvinyl chloride pipe, can be used for water supply, mining, gas supply, etc.",
@@ -237,7 +238,7 @@ export const products = {
       "This pipe is five layer structure: plastic layer, adhesive layer, aluminum layer, adhesive layer and plastic layer.",
       "The aluminum layer is formed by ultrasonic overlap welding.",
       "Our machine can form five layer in one step, to save machine space and increase stability. Production yield can reach 98%, and line speed is also higher.",
-      "Pipe made by one step has higher quality, as all material are extruded and integrated at one time, no need to reheat material again.",
+      "Pipe made by one step has higher quality, as all material are extruded and integrated at one time, no need to reheat material again. In this way, adhesion between each layer is much better.",
     ],
     images: [
       "/images/products/pex-al-pex-pipe-machine/pex-al-pex-pipe-machine-hero.jpg",
@@ -264,12 +265,13 @@ export const products = {
   "rtp-tcp-pipe-production-line": {
     title: "RTP/TCP Pipe Production Line",
     description: "RTP/TCP pipe production line for Ø 50-630mm high-pressure reinforced thermoplastic pipe.",
+    catalogHref: "/downloads/xinrongplas-rtp-tcp-pipe-production-line.pdf",
     paragraphs: [
       "Our RTP/TCP pipe production line can produce pipe size range from Ø50-630mm.",
-      "The RTP, thermoplastic reinforced pipe, and TCP, thermoplastic composite pipe, are mainly used as high pressure and non-metallic pipes for oil and gas industries.",
+      "The RTP (thermoplastic reinforced pipe) and TCP (thermoplastic composite pipe) are mainly used as high pressure and non-metallic pipes for oil and gas industries.",
       "They can also be used for water supply and district heating.",
       "Compared with other kinds of high pressure pipes, RTP/TCP has advantage of easy installation and connection, more flexibility, long service life, low cost and reliability.",
-      "By changing the inner layer material, the RTP/TCP pipe can work under different temperature and circumstance.",
+      "By changing the inner layer material, the RTP/TCP pipe can work under different temperature and circumstance. Also, by changing number of reinforced machine and reinforced material, RTP/TCP can have different working pressure.",
     ],
     images: [
       "/images/products/rtp-tcp-pipe-production-line/rtp-tcp-pipe-production-line-hero.jpg",
@@ -306,10 +308,10 @@ export const products = {
       "The whole machine is controlled by PLC and servo control system, with high automation, stable and reliable, lower power consumption, suitable for different pipe diameter and length.",
     ],
     images: [
-      "/images/products/automatic-pipe-drilling-slotting-machine/automatic-pipe-drilling-slotting-machine-hero.jpg",
-      "/images/products/automatic-pipe-drilling-slotting-machine/automatic-pipe-drilling-machine-overview.jpg",
-      "/images/products/automatic-pipe-drilling-slotting-machine/automatic-pipe-drilling-machine-operating-interface.png",
-      "/images/products/automatic-pipe-drilling-slotting-machine/pipe-slotting-machine-cutting-station.jpg",
+      "/images/products/automatic-pipe-drilling-slotting-machine/automatic-pipe-drilling-slotting-machine-hero.png",
+      "/images/products/automatic-pipe-drilling-slotting-machine/automatic-pipe-drilling-slotting-detail-1.jpg",
+      "/images/products/automatic-pipe-drilling-slotting-machine/automatic-pipe-drilling-slotting-detail-2.png",
+      "/images/products/automatic-pipe-drilling-slotting-machine/automatic-pipe-drilling-slotting-detail-3.jpg",
     ],
     videoId: "vKniztDXRLU",
     features: [

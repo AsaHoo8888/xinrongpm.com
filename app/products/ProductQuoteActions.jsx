@@ -1,12 +1,21 @@
 "use client";
 
-import { Download, Quote, X } from "lucide-react";
+import { Download, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import ContactPhoneField from "../contact/ContactPhoneField";
 
-export default function ProductQuoteActions({ productTitle, sourcePage }) {
+export default function ProductQuoteActions({
+  productTitle,
+  sourcePage,
+  buttonLabel = "Request Quote",
+  actionsClassName = "",
+  showCatalog: showCatalogOverride,
+  catalogHref = "/downloads/xinrongplas-catalog.pdf",
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState(null);
+  const showCatalog =
+    showCatalogOverride ?? productTitle !== "Automatic Pipe Drilling/Slotting Machine";
 
   useEffect(() => {
     if (!isOpen) {
@@ -54,17 +63,24 @@ export default function ProductQuoteActions({ productTitle, sourcePage }) {
 
   return (
     <>
-      <div className="product-actions">
+      <div className={`product-actions${showCatalog ? "" : " product-actions-single"}${actionsClassName ? ` ${actionsClassName}` : ""}`}>
         <button
           className="primary-button quote-modal-trigger"
           type="button"
           onClick={() => setIsOpen(true)}
         >
-          <Quote size={18} aria-hidden="true" /> Request Quote
+          {buttonLabel}
         </button>
-        <a className="outline-button" href="#specifications">
-          <Download size={18} aria-hidden="true" /> Catalog
-        </a>
+        {showCatalog ? (
+          <a
+            className="outline-button"
+            href={catalogHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Download size={18} aria-hidden="true" /> Catalog
+          </a>
+        ) : null}
       </div>
 
       {isOpen ? (

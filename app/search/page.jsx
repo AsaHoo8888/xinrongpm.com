@@ -77,24 +77,23 @@ function NavLinks() {
           ))}
         </div>
       </div>
-      <a className="nav-link" href="/services">
-        Services
-      </a>
-      <a className="nav-link" href="/certificates">
-        Certificates
-      </a>
-      <a className="nav-link" href="/news">
-        News
-      </a>
       <a className="nav-link" href="/video">
         Video
       </a>
       <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/about">
-        About
-      </a>
+      <div className="nav-dropdown">
+        <a className="nav-link dropdown-trigger" href="/about">
+          About <ChevronDown size={14} aria-hidden="true" />
+        </a>
+        <div className="dropdown-panel">
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/certificates">Certificates</a>
+          <a href="/news">News</a>
+        </div>
+      </div>
       <a className="nav-link" href="/contact">
         Contact
       </a>

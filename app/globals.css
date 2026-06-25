@@ -319,10 +319,14 @@ textarea {
   top: 54px;
   right: 0;
   width: min(88vw, 380px);
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   padding: 16px;
   background: var(--white);
   border: 1px solid var(--outline);
   box-shadow: 0 4px 0 rgba(45, 49, 51, 0.12);
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-panel .nav-link,
@@ -343,7 +347,7 @@ textarea {
 
 .hero {
   position: relative;
-  min-height: 70vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   padding-top: 80px;
@@ -497,7 +501,9 @@ textarea {
 
 .case-controls {
   display: flex;
+  justify-content: center;
   gap: 16px;
+  margin-top: 24px;
 }
 
 .case-controls button {
@@ -574,7 +580,7 @@ textarea {
 .product-media {
   position: relative;
   aspect-ratio: 16 / 9;
-  padding: 14px;
+  padding: 8px;
   background: var(--surface-container);
   overflow: hidden;
 }
@@ -588,9 +594,9 @@ textarea {
 
 .product-image-hover {
   position: absolute;
-  inset: 14px;
-  width: calc(100% - 28px);
-  height: calc(100% - 28px);
+  inset: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
   opacity: 0;
 }
 
@@ -835,7 +841,7 @@ textarea {
 }
 
 .about-band {
-  min-height: 620px;
+  min-height: 500px;
   display: flex;
   align-items: center;
   background: var(--deep-ink);
@@ -1000,10 +1006,8 @@ textarea {
   grid-auto-columns: calc((100% - 48px) / 3);
   grid-auto-flow: column;
   gap: 24px;
-  overflow-x: auto;
+  overflow-x: hidden;
   padding: 32px 0 6px;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
   scrollbar-width: none;
 }
 
@@ -1067,6 +1071,70 @@ textarea {
   letter-spacing: 0.05em;
   line-height: 1.3;
   text-transform: uppercase;
+}
+
+.faq-section {
+  background: var(--surface-low);
+  border-block: 1px solid var(--outline);
+}
+
+.faq-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 1120px;
+  margin: 0 auto;
+  gap: 14px;
+}
+
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--outline);
+  box-shadow: 0 2px 0 rgba(45, 49, 51, 0.05);
+}
+
+.faq-item summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  padding: 18px 58px 18px 22px;
+  color: var(--primary);
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  position: absolute;
+  right: 22px;
+  content: "+";
+  color: var(--secondary);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.faq-item[open] summary::after {
+  content: "-";
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 22px 22px;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+@media (max-width: 720px) {
+  .faq-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 .contact-section {
@@ -1179,14 +1247,17 @@ textarea {
   gap: 40px;
 }
 
-.footer-brand-column strong {
-  display: block;
-  color: var(--white);
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1;
-  text-transform: uppercase;
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.footer-logo img {
+  width: auto;
+  height: 42px;
+  filter: brightness(0) invert(1);
+  object-fit: contain;
 }
 
 .footer-brand-column p {
@@ -1455,6 +1526,16 @@ textarea {
 .contact-card > p {
   margin: 0 0 32px;
   color: var(--ink-soft);
+}
+
+.policy-section + .policy-section {
+  margin-top: 28px;
+}
+
+.policy-section p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.7;
 }
 
 .contact-page-form {
@@ -2551,6 +2632,28 @@ textarea {
   line-height: 1.82;
 }
 
+.single-post-subheading {
+  margin: 52px 0 18px;
+  color: var(--primary);
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.single-post-list {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 36px;
+  padding-left: 24px;
+  color: var(--ink-soft);
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.single-post-list li::marker {
+  color: var(--secondary-deep);
+}
+
 .single-post-figure {
   margin: 0 0 40px;
   background: var(--surface-container);
@@ -2719,7 +2822,7 @@ textarea {
 .services-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(46, 66, 141, 0.86), rgba(46, 66, 141, 0.7));
+  background: linear-gradient(rgba(46, 66, 141, 0.52), rgba(46, 66, 141, 0.34));
 }
 
 .services-hero-copy {
@@ -3100,6 +3203,29 @@ textarea {
   color: var(--ink-soft);
 }
 
+.video-youtube-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  border-radius: 4px;
+  background: #ff0000;
+  color: var(--white);
+  padding: 0 18px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.video-youtube-button:hover {
+  background: #cc0000;
+  transform: translateY(-1px);
+}
+
 .video-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3167,6 +3293,14 @@ textarea {
   max-width: 760px;
   margin: 0;
   color: rgba(255, 255, 255, 0.82);
+}
+
+.video-cta-actions {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .video-cta-card .primary-button {
@@ -3280,13 +3414,16 @@ textarea {
   box-shadow: 0 10px 24px rgba(45, 49, 51, 0.1);
 }
 
-.certificate-card a {
+.certificate-card button {
   display: flex;
   aspect-ratio: 4 / 5;
+  width: 100%;
   align-items: center;
   justify-content: center;
   padding: 16px;
   background: var(--surface-low);
+  border: 0;
+  cursor: zoom-in;
 }
 
 .certificate-card img {
@@ -3313,6 +3450,49 @@ textarea {
   color: var(--ink);
   font-size: 20px;
   line-height: 1.35;
+}
+
+.certificate-lightbox {
+  position: fixed;
+  z-index: 120;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(8, 18, 38, 0.82);
+}
+
+.certificate-lightbox-panel {
+  position: relative;
+  max-width: min(92vw, 1000px);
+  max-height: 90vh;
+  padding: 20px;
+  background: var(--white);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+}
+
+.certificate-lightbox-panel img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(90vh - 40px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.certificate-lightbox-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  background: var(--primary);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  cursor: pointer;
 }
 
 .certificate-stats-section {
@@ -3355,7 +3535,7 @@ textarea {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
   gap: 48px;
-  align-items: center;
+  align-items: start;
   padding: 48px;
   color: var(--white);
   background: var(--primary);
@@ -3557,6 +3737,34 @@ textarea {
   padding: 0 max(32px, calc((100vw - var(--container)) / 2)) 14px;
   scroll-snap-type: x mandatory;
   scrollbar-color: var(--outline) transparent;
+}
+
+.about-timeline-controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.about-timeline-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  color: var(--primary-deep);
+  background: var(--white);
+  border: 1px solid var(--outline);
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.about-timeline-controls button:hover {
+  border-color: var(--primary);
+  background: var(--surface-container);
 }
 
 .about-timeline-card {
@@ -3829,6 +4037,7 @@ textarea {
 .products-center-media {
   display: block;
   aspect-ratio: 16 / 9;
+  padding: 18px;
   overflow: hidden;
   background: var(--surface-container);
 }
@@ -4071,6 +4280,10 @@ textarea {
   gap: 24px;
 }
 
+.product-actions-single {
+  grid-template-columns: 1fr;
+}
+
 .quote-modal-trigger {
   width: 100%;
   border: 0;
@@ -4191,7 +4404,7 @@ textarea {
 }
 
 .product-section h2 {
-  margin: 0 0 48px;
+  margin: 0 0 24px;
   color: var(--primary);
   font-size: 24px;
   line-height: 1.35;
@@ -4457,9 +4670,18 @@ textarea {
     width: min(320px, calc(100vw - 24px));
   }
 
+  .mobile-panel {
+    top: 48px;
+    max-height: calc(100dvh - 88px);
+  }
+
   .hero {
-    min-height: 70vh;
+    min-height: 80vh;
     padding-top: 72px;
+  }
+
+  .about-band {
+    min-height: 420px;
   }
 
   .hero h1,
@@ -4517,13 +4739,20 @@ textarea {
   }
 
   .floating-contact {
-    right: 14px;
-    gap: 10px;
+    top: auto;
+    right: 16px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    left: 16px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 12px;
+    transform: none;
   }
 
   .floating-contact-link {
-    width: 60px;
-    min-height: 60px;
+    width: 56px;
+    min-height: 56px;
     padding: 0;
     box-shadow: 0 12px 28px rgba(24, 28, 30, 0.28);
   }
@@ -4535,7 +4764,7 @@ textarea {
 
   .floating-contact-link:hover,
   .floating-contact-link:focus-visible {
-    transform: translateX(-4px) scale(1.06);
+    transform: translateY(-4px) scale(1.06);
   }
 
   .stats-grid,
@@ -4997,17 +5226,27 @@ textarea {
   }
 
   .spec-table-wrap {
-    overflow-x: auto;
+    overflow-x: visible;
   }
 
   .spec-table {
-    min-width: 760px;
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
   }
 
   .spec-table th,
   .spec-table td {
-    height: 50px;
-    padding: 9px 16px;
+    height: auto;
+    padding: 8px 6px;
+    font-size: 11px;
+    line-height: 1.28;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .spec-table thead th {
+    font-weight: 400;
   }
 
   .product-cta {
@@ -5046,5 +5285,161 @@ textarea {
 
   .inquiry-form {
     padding: 24px;
+  }
+}
+
+:is(
+  .services-hero,
+  .certificates-hero,
+  .news-hero,
+  .video-hero,
+  .cases-hero,
+  .about-hero,
+  .contact-hero
+) {
+  position: relative;
+  min-height: 500px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 0;
+  color: var(--white);
+  background: var(--primary);
+  text-align: center;
+}
+
+.certificates-hero {
+  background:
+    linear-gradient(rgba(24, 28, 30, 0.66), rgba(24, 28, 30, 0.5)),
+    url("/images/page-heroes/xinrongplas-about-banner-hero.jpg") center / cover no-repeat;
+}
+
+:is(
+  .services-hero,
+  .certificates-hero,
+  .news-hero,
+  .video-hero,
+  .cases-hero,
+  .about-hero,
+  .contact-hero
+) {
+  min-height: 360px;
+}
+
+:is(
+  .services-hero,
+  .news-hero,
+  .video-hero,
+  .cases-hero,
+  .about-hero,
+  .contact-hero
+) > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+:is(
+  .services-hero-overlay,
+  .news-hero-overlay,
+  .video-hero-overlay,
+  .cases-hero-overlay,
+  .about-hero-overlay,
+  .contact-hero-overlay
+) {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(24, 28, 30, 0.66), rgba(24, 28, 30, 0.5));
+}
+
+:is(
+  .services-hero-copy,
+  .certificates-hero-copy,
+  .news-hero-copy,
+  .video-hero-copy,
+  .cases-hero-copy,
+  .about-hero-copy,
+  .contact-hero-copy
+) {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+  text-align: center;
+}
+
+:is(
+  .services-hero-copy,
+  .certificates-hero-copy,
+  .news-hero-copy,
+  .video-hero-copy,
+  .cases-hero-copy,
+  .about-hero-copy,
+  .contact-hero-copy
+) h1 {
+  max-width: 880px;
+  margin: 0 auto 24px;
+  font-size: 48px;
+  line-height: 1.15;
+}
+
+:is(
+  .services-hero-copy,
+  .certificates-hero-copy,
+  .news-hero-copy,
+  .video-hero-copy,
+  .cases-hero-copy,
+  .about-hero-copy,
+  .contact-hero-copy
+) p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+:is(.video-hero-copy, .cases-hero-copy, .about-hero-copy) > span,
+.contact-hero-copy > span,
+.cases-hero-stats {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  :is(
+    .services-hero,
+    .certificates-hero,
+    .news-hero,
+    .video-hero,
+    .cases-hero,
+    .about-hero,
+    .contact-hero
+  ) {
+    min-height: 320px;
+  }
+
+  :is(
+    .services-hero-copy,
+    .certificates-hero-copy,
+    .news-hero-copy,
+    .video-hero-copy,
+    .cases-hero-copy,
+    .about-hero-copy,
+    .contact-hero-copy
+  ) h1 {
+    font-size: 36px;
+  }
+
+  :is(
+    .services-hero-copy,
+    .certificates-hero-copy,
+    .news-hero-copy,
+    .video-hero-copy,
+    .cases-hero-copy,
+    .about-hero-copy,
+    .contact-hero-copy
+  ) p {
+    font-size: 16px;
   }
 }

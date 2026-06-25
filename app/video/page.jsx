@@ -3,6 +3,7 @@ import {
   ChevronDown,
   Menu,
   PlayCircle,
+  Youtube,
 } from "lucide-react";
 import HeaderSearch from "../HeaderSearch";
 import { productNav } from "../../lib/content";
@@ -93,24 +94,23 @@ function NavLinks() {
           ))}
         </div>
       </div>
-      <a className="nav-link" href="/services">
-        Services
-      </a>
-      <a className="nav-link" href="/certificates">
-        Certificates
-      </a>
-      <a className="nav-link" href="/news">
-        News
-      </a>
       <a className="nav-link nav-link-active" href="/video">
         Video
       </a>
       <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/about">
-        About
-      </a>
+      <div className="nav-dropdown">
+        <a className="nav-link dropdown-trigger" href="/about">
+          About <ChevronDown size={14} aria-hidden="true" />
+        </a>
+        <div className="dropdown-panel">
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/certificates">Certificates</a>
+          <a href="/news">News</a>
+        </div>
+      </div>
       <a className="nav-link" href="/contact">
         Contact
       </a>
@@ -173,8 +173,7 @@ export default function VideoPage() {
             </span>
             <h1>Video Resource Center</h1>
             <p>
-              Explore Xinrongplas machinery demonstrations through embedded video
-              resources. Videos are loaded directly without custom cover images.
+              Explore Xinrongplas machinery demonstrations through video resources.
             </p>
           </div>
         </section>
@@ -183,7 +182,15 @@ export default function VideoPage() {
           <div className="container">
             <div className="video-library-heading">
               <h2>Machine Demonstration Videos</h2>
-              <p>{videos.length} videos extracted from xinrongpm.com/video/.</p>
+              <a
+                className="video-youtube-button"
+                href="https://www.youtube.com/@xinrongmachinery9929"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Youtube size={18} aria-hidden="true" />
+                WATCH MORE VIDEOS
+              </a>
             </div>
 
             <div className="video-grid">
@@ -218,9 +225,20 @@ export default function VideoPage() {
                 line configuration.
               </p>
             </div>
-            <a className="primary-button" href="/contact">
-              Get a Free Quote <ArrowRight size={18} aria-hidden="true" />
-            </a>
+            <div className="video-cta-actions">
+              <a className="primary-button" href="/contact">
+                Get a Free Quote <ArrowRight size={18} aria-hidden="true" />
+              </a>
+              <a
+                className="video-youtube-button"
+                href="https://www.youtube.com/@xinrongmachinery9929"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Youtube size={18} aria-hidden="true" />
+                WATCH MORE VIDEOS
+              </a>
+            </div>
           </div>
         </section>
       </main>

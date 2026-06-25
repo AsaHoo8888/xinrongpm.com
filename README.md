@@ -38,5 +38,6 @@ The homepage works with built-in fallback content. To manage it in Directus, cre
 - `home_stats`: `sort`, `value`, `label`
 - `products`: `sort`, `featured`, `name`, `tag`, `range`, `image`
 - `contact_inquiries`: `full_name`, `email`, `phone`, `country`, `message`, `source_page`, `product_title`, `submitted_at`
+- `newsletter_subscriptions`: `email`, `source_page`, `status`, `submitted_at`
 
 The design references `/Users/asa/Downloads/xinrongpm.md` and `/Users/asa/Downloads/xinrongpm homepage.html`.

@@ -1,21 +1,21 @@
 import {
-  ArrowRight,
   ChevronDown,
-  ClipboardCheck,
+  CircleDollarSign,
   Factory,
-  FileText,
   Globe2,
-  Headphones,
+  Lightbulb,
   Mail,
   MapPin,
   Menu,
   PackageCheck,
   Phone,
   Settings,
+  ShieldCheck,
   Truck,
   Wrench,
 } from "lucide-react";
 import HeaderSearch from "../HeaderSearch";
+import ProductQuoteActions from "../products/ProductQuoteActions";
 import { productNav } from "../../lib/content";
 
 export const metadata = {
@@ -24,14 +24,13 @@ export const metadata = {
     "Xinrongplas service support from pre-sale consultation and project planning to manufacturing updates, after-sale commissioning, spare parts, and lifelong technical service.",
 };
 
-const heroImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBj9wCeiQQIuMyxI8h7dFvrUbIEkrEx0tND1EjImvISKk_hwkrnLfUEZZwyNT9YdQz828sQZfg9cyk2FvojhjzeN4gnGySWzHR6Tz2m8Mt_U9bIafy_Xy9STNIW6IA6byzDNgxPKu-_pe9qjUil4_LwC8vcVe9BEM86sXp5evZtI42DDihh1K54_hiwJf3eTERo-bFx88m-nYLrRXP54tbyl2v0jGr6bqFYWegGcaCcajnyD8KY6TG11JZkwFJ9VFUp08rsb10y1R0";
+const heroImage = "/images/services/service.jpg";
 
 const serviceGroups = [
   {
     id: "pre-sale",
     title: "Pre-sale Service",
-    icon: ClipboardCheck,
+    icon: Lightbulb,
     items: [
       [
         "Pre-sale consulting by experienced sales engineers",
@@ -81,7 +80,7 @@ const serviceGroups = [
   {
     id: "after-sale",
     title: "After-sale Service",
-    icon: Headphones,
+    icon: ShieldCheck,
     items: [
       [
         "Provide complete set of technical documents",
@@ -140,24 +139,23 @@ function NavLinks() {
           ))}
         </div>
       </div>
-      <a className="nav-link nav-link-active" href="/services">
-        Services
-      </a>
-      <a className="nav-link" href="/certificates">
-        Certificates
-      </a>
-      <a className="nav-link" href="/news">
-        News
-      </a>
       <a className="nav-link" href="/video">
         Video
       </a>
       <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/about">
-        About
-      </a>
+      <div className="nav-dropdown">
+        <a className="nav-link nav-link-active dropdown-trigger" href="/about">
+          About <ChevronDown size={14} aria-hidden="true" />
+        </a>
+        <div className="dropdown-panel">
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/certificates">Certificates</a>
+          <a href="/news">News</a>
+        </div>
+      </div>
       <a className="nav-link" href="/contact">
         Contact
       </a>
@@ -221,7 +219,7 @@ export default function ServicesPage() {
 
               return (
                 <a href={`#${group.id}`} key={group.id}>
-                  <Icon size={18} aria-hidden="true" />
+                  <Icon size={24} aria-hidden="true" />
                   {group.title.replace(" Service", "")}
                 </a>
               );
@@ -238,7 +236,7 @@ export default function ServicesPage() {
                 return (
                   <section className="services-phase" id={group.id} key={group.id}>
                     <div className="services-phase-heading">
-                      <Icon size={28} aria-hidden="true" />
+                      <Icon size={40} aria-hidden="true" />
                       <h2>{group.title}</h2>
                     </div>
                     <div className="service-detail-list">
@@ -262,12 +260,13 @@ export default function ServicesPage() {
         <section className="services-global-section">
           <div className="container services-global-layout">
             <div>
-              <h2>Global Presence, Localized Support</h2>
+              <h2>Global Presence. Worldwide Service.</h2>
               <p>
-                With over 80 countries served, our logistics and support
-                infrastructure is built for speed. Every Xinrongplas machine is
-                assigned a unique Digital ID, allowing engineers to pull up exact
-                blueprints and spare parts history in seconds.
+                With over 80 countries served, we coordinate logistics and
+                support through trusted partners to ensure fast response. Every
+                Xinrongplas machine is assigned a unique Digital ID, allowing
+                engineers to pull up exact blueprints and spare parts history in
+                seconds.
               </p>
               <div className="services-stat-row">
                 <div>
@@ -299,12 +298,11 @@ export default function ServicesPage() {
         <section className="services-parts-section">
           <div className="container services-parts-grid">
             <article>
-              <PackageCheck size={32} aria-hidden="true" />
-              <h2>Parts</h2>
+              <ShieldCheck size={32} aria-hidden="true" />
+              <h2>Responsibility</h2>
               <p>
-                Provide customers with a 2-year accessory return and exchange
-                service free of charge, and customers are not required to bear
-                express delivery costs.
+                During the warranty period, we take full responsibility for any
+                equipment malfunctions or defects caused by our manufacturing.
               </p>
             </article>
             <article>
@@ -317,7 +315,7 @@ export default function ServicesPage() {
               </p>
             </article>
             <article>
-              <FileText size={32} aria-hidden="true" />
+              <CircleDollarSign size={32} aria-hidden="true" />
               <h2>20% Discount</h2>
               <p>
                 For accessories that have passed the warranty period, we provide
@@ -341,7 +339,7 @@ export default function ServicesPage() {
                   <Phone size={18} aria-hidden="true" /> 0086-13115119251
                 </span>
                 <span>
-                  <Mail size={18} aria-hidden="true" /> marketing1@xinrongpm.com
+                  <Mail size={18} aria-hidden="true" /> service@xinrongpm.com
                 </span>
                 <span>
                   <MapPin size={18} aria-hidden="true" /> Zhangjiagang City, Jiangsu Province, China
@@ -349,12 +347,16 @@ export default function ServicesPage() {
               </div>
             </div>
             <div className="services-contact-actions">
-              <a className="primary-button" href="/contact">
+              <a className="primary-button" href="mailto:service@xinrongpm.com">
                 Contact Support <Wrench size={18} aria-hidden="true" />
               </a>
-              <a className="outline-button" href="/contact">
-                Get a Quote <ArrowRight size={18} aria-hidden="true" />
-              </a>
+              <ProductQuoteActions
+                actionsClassName="services-quote-action"
+                buttonLabel="Get a Quote"
+                productTitle="Service Support"
+                showCatalog={false}
+                sourcePage="/services"
+              />
             </div>
           </div>
         </section>

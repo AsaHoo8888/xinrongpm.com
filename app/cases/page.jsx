@@ -2,11 +2,11 @@ import {
   ArrowRight,
   CheckCircle2,
   ChevronDown,
-  Factory,
   Globe2,
   MapPin,
   Menu,
   Quote,
+  Workflow,
 } from "lucide-react";
 import HeaderSearch from "../HeaderSearch";
 import { productNav } from "../../lib/content";
@@ -83,8 +83,9 @@ const cases = [
   {
     country: "Senegal",
     customer: "Mr. Kagny",
-    equipment: "3 lines - PE180-315 two layers pipe production line",
-    summary: "3 PE Lines",
+    equipment:
+      "3 lines - PE180-315 two layers pipe production line, 1 line - PVC250 high speed production line",
+    summary: "3 PE Lines + 1 PVC Lines",
     quote:
       "Thanks to Xinrong sales and engineers for their efforts. The production line is perfect and the quality is very good.",
     image: "/images/project-cases/xinrongplas-project-case-senegal-pe315-two-layer-pipe-line.jpg",
@@ -109,6 +110,36 @@ const cases = [
       "Thanks for all works done by Xinrong. We are satisfied with Xinrong's machinery, Xinrong's service and Xinrong's people.",
     image: "/images/project-cases/xinrongplas-project-case-uzbekistan-multiple-pipe-extrusion-lines.jpg",
     alt: "Xinrongplas project case in Uzbekistan for PPR, PVC, and PE pipe extrusion lines",
+  },
+  {
+    country: "Kazakhstan",
+    customer: "Darkhan",
+    equipment: "PPR63 Double Layer Pipe Extruder Line, PE250 Pipe Extrusion Line",
+    summary: "PPR & PE Lines",
+    quote:
+      "We have checked many companies and finally cooperate with Xinrong. After more than two years working, machine is still working in good condition.",
+    image: "/images/project-cases/xinrongplas-project-case-kazakhstan-darkhan-pipe-extrusion-lines.jpg",
+    alt: "Xinrongplas project case in Kazakhstan for PPR63 double layer pipe extruder line and PE250 pipe extrusion line",
+  },
+  {
+    country: "Indian",
+    customer: "Parveen",
+    equipment: "PE315 Pipe Extrusion Line, PE600 Double Wall Corrugated Pipe Extrusion Line",
+    summary: "PE & Corrugated Lines",
+    quote:
+      "I am very happy to give feed back about Xinrong and its machinery. Service in time, response time within 12 hours, machine is good and this time machinery is working in our workshop continuously without stopping for 20 days. We are happy to get machiney from Xinrong.",
+    image: "/images/project-cases/xinrongplas-project-case-indian-parveen-pipe-extrusion-lines.jpg",
+    alt: "Xinrongplas project case in Indian for PE315 pipe extrusion line and PE600 double wall corrugated pipe extrusion line",
+  },
+  {
+    country: "Dubai",
+    customer: "Mohamed",
+    equipment: "PE710 Pipe Extrusion Line, PE2000 Steel Belt Reinforced Corrugated Pipe Extrusion Line",
+    summary: "Large Diameter Lines",
+    quote:
+      "We are very satisfied with Xinrong's machine. We are confident to extend our market with quality products produced by quality machines.",
+    image: "/images/project-cases/xinrongplas-project-case-dubai-mohamed-pipe-extrusion-lines.jpg",
+    alt: "Xinrongplas project case in Dubai for PE710 pipe extrusion line and PE2000 steel belt reinforced corrugated pipe extrusion line",
   },
 ];
 
@@ -141,24 +172,23 @@ function NavLinks() {
           ))}
         </div>
       </div>
-      <a className="nav-link" href="/services">
-        Services
-      </a>
-      <a className="nav-link" href="/certificates">
-        Certificates
-      </a>
-      <a className="nav-link" href="/news">
-        News
-      </a>
       <a className="nav-link" href="/video">
         Video
       </a>
       <a className="nav-link nav-link-active" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/about">
-        About
-      </a>
+      <div className="nav-dropdown">
+        <a className="nav-link dropdown-trigger" href="/about">
+          About <ChevronDown size={14} aria-hidden="true" />
+        </a>
+        <div className="dropdown-panel">
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/certificates">Certificates</a>
+          <a href="/news">News</a>
+        </div>
+      </div>
       <a className="nav-link" href="/contact">
         Contact
       </a>
@@ -221,11 +251,11 @@ export default function CasesPage() {
             </span>
             <h1>Project Cases</h1>
             <p>
-              Customer feedback and successful plastic pipe extrusion machinery
-              installations across Europe, Africa, and Asia.
+              Customer feedback and successful plastic pipe extrusion machines
+              running across the world.
             </p>
             <div className="cases-hero-stats" aria-label="Project case highlights">
-              <strong>9 Featured Cases</strong>
+              <strong>12 Featured Cases</strong>
               <strong>80+ Export Countries</strong>
               <strong>Since 1996</strong>
             </div>
@@ -235,7 +265,7 @@ export default function CasesPage() {
         <section className="cases-grid-section" id="cases">
           <div className="container cases-section-heading">
             <span className="section-kicker">What Customers Are Saying</span>
-            <h2>Verified Project Experience from Global Partners</h2>
+            <h2>Voice From Our Customers</h2>
             <p>
               These projects cover PE, PPR, PVC, large diameter solid wall pipe,
               and double wall corrugated pipe extrusion applications.
@@ -284,12 +314,12 @@ export default function CasesPage() {
         <section className="cases-cta-section">
           <div className="container cases-cta-card">
             <div>
-              <Factory size={38} aria-hidden="true" />
-              <h2>Want to Check Xinrongplas Machinery Near Your Market?</h2>
+              <Workflow size={38} aria-hidden="true" />
+              <h2>Want to Check Our Running Machinery?</h2>
               <p>
-                Contact our sales engineers to discuss nearby references,
-                similar pipe applications, and a suitable extrusion line plan
-                for your production requirements.
+                Contact our sales engineers to learn about nearby reference
+                installations, similar extrusion machinery, and pipe
+                applications for your ongoing pipe production project.
               </p>
             </div>
             <a className="primary-button" href="/contact">

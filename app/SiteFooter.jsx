@@ -13,6 +13,9 @@ const footerLinks = [
   ["Contact", "/contact"],
 ];
 
+const logoSrc =
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuBxgN6DgcHA3sZF4ZGd6XMMGRxG8mrG9FXW31mUv9UO5kSnm6J_wSRmkVBn7TmaVxBfkb-a4PjNb0tCsZ1QqS2uw37hRdr-QMZwhOTmu9WhCAt8Q0xD037lHRGu_3G5vLZaRaY06Vj2KRPlVCGrj7Ei8DWfdtewHAEeQYxfZAfKAnWffmj0mCSv3gCO8AiKKZwnZO2PIT4GNa_pE6s75C33koHMlO1CZy21ZYKqlUiDLtYl5jM1csFguMd1xpcOkikx7PIGtReiX-Y";
+
 function slugify(value) {
   return value
     .toLowerCase()
@@ -29,7 +32,9 @@ export default function SiteFooter() {
     <footer className="site-footer">
       <div className="footer-mega">
         <div className="footer-brand-column">
-          <strong>Xinrongplas</strong>
+          <a className="footer-logo" href="/" aria-label="Xinrongplas Home">
+            <img src={logoSrc} alt="Xinrongplas" />
+          </a>
           <p>
             Xinrongplas is a globally recognized leader in the design and
             manufacture of high-performance plastic extrusion machinery,
@@ -123,8 +128,7 @@ export default function SiteFooter() {
         <div className="footer-copyright">
           <span>Copyright © 2024 Jiangsu Xinrongplas Machinery Co., Ltd.</span>
           <div>
-            <a href="/contact">Privacy Policy</a>
-            <a href="/contact">Terms of Service</a>
+            <a href="/privacy-policy">Privacy Policy</a>
           </div>
         </div>
       </div>

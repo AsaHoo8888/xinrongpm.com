@@ -40,24 +40,23 @@ function NavLinks() {
           ))}
         </div>
       </div>
-      <a className="nav-link" href="/services">
-        Services
-      </a>
-      <a className="nav-link" href="/certificates">
-        Certificates
-      </a>
-      <a className="nav-link" href="/news">
-        News
-      </a>
       <a className="nav-link" href="/video">
         Video
       </a>
       <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/about">
-        About
-      </a>
+      <div className="nav-dropdown">
+        <a className="nav-link dropdown-trigger" href="/about">
+          About <ChevronDown size={14} aria-hidden="true" />
+        </a>
+        <div className="dropdown-panel">
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/certificates">Certificates</a>
+          <a href="/news">News</a>
+        </div>
+      </div>
       <a className="nav-link" href="/contact">
         Contact
       </a>
@@ -99,6 +98,16 @@ function SiteHeader() {
 
 export function generateStaticParams() {
   return getProductSlugs().map((slug) => ({ slug }));
+}
+
+function formatSpecCell(product, cell, index) {
+  const header = product.specHeaders[index] || "";
+
+  if (index > 0 && /Pipe (Diameter )?Range/.test(header) && !cell.includes("Ø")) {
+    return `Ø${cell}`;
+  }
+
+  return cell;
 }
 
 export async function generateMetadata({ params }) {
@@ -147,20 +156,24 @@ export default async function ProductPage({ params }) {
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-            <ProductQuoteActions productTitle={product.title} sourcePage={sourcePage} />
+            <ProductQuoteActions
+              productTitle={product.title}
+              sourcePage={sourcePage}
+              catalogHref={product.catalogHref}
+            />
           </div>
         </section>
 
         {product.videoId ? (
           <section className="product-section product-video-section">
-            <h2>Operation Video</h2>
+            <h2>Machine Video</h2>
             <div className="video-frame">
               <iframe
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 referrerPolicy="strict-origin-when-cross-origin"
                 src={`https://www.youtube.com/embed/${product.videoId}`}
-                title={`${product.title} Operation Video`}
+                title={`${product.title} Machine Video`}
               />
             </div>
           </section>
@@ -198,7 +211,7 @@ export default async function ProductPage({ params }) {
                           {cell}
                         </th>
                       ) : (
-                        <td key={`${row[0]}-${cell}`}>{cell}</td>
+                        <td key={`${row[0]}-${cell}`}>{formatSpecCell(product, cell, index)}</td>
                       ),
                     )}
                   </tr>

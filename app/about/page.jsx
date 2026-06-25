@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import HeaderSearch from "../HeaderSearch";
 import { productNav } from "../../lib/content";
+import AboutTimeline from "./AboutTimeline";
 
 export const metadata = {
   title: "About Us | Xinrongplas Machinery",
@@ -29,7 +30,7 @@ const milestones = [
   {
     year: "1996",
     title: "Company Founded",
-    text: "Established with one workshop, producing PEX-Al-PEX lines and small PE/PPR lines. Annual sales exceeded $10M.",
+    text: "Established by renting one workshop, producing PEX-Al-PEX lines and small PE/PPR lines. Annual sales exceeded $10M.",
     image: "/images/about-history/xinrongplas-history-1996-company-founded.jpg",
     width: 800,
     height: 600,
@@ -52,8 +53,8 @@ const milestones = [
   },
   {
     year: "2002",
-    title: "National Standards",
-    text: "Established the trade department and co-drafted the national standard for hollow wall winding pipes.",
+    title: "Expanded Sales Network",
+    text: "Expanded our sales network by establishing foreign sales department and co-drafted the national standard for hollow wall winding pipes (GB/T 19472.2-2004).",
     image: "/images/about-history/xinrongplas-history-2002-hollow-wall-winding-pipe-standard.jpg",
     width: 800,
     height: 600,
@@ -84,8 +85,8 @@ const milestones = [
   },
   {
     year: "2010",
-    title: "Mega Facility",
-    text: "Moved to a new 50,000 sqm factory with comprehensive equipment upgrades.",
+    title: "New Workshop",
+    text: "Moved to a new 60,000 sqm factory with comprehensive equipment upgrades.",
     image: "/images/about-history/xinrongplas-history-2010-new-50000-square-meter-workshop.jpg",
     width: 342,
     height: 233,
@@ -125,7 +126,7 @@ const milestones = [
   {
     year: "2018",
     title: "Advanced RTP Winding",
-    text: "Upgraded RTP winding systems to support UD tapes including carbon and aramid fibers.",
+    text: "Upgraded RTP winding systems to support UD tapes such as fiberglass tape, steel wire tape, carbon fiber tape, aramid tape, etc.",
     image: "/images/about-history/xinrongplas-history-2018-rtp-winding-machine-upgrade.jpg",
     width: 800,
     height: 600,
@@ -143,7 +144,7 @@ const milestones = [
 const stats = [
   { value: "1996", label: "Founded", icon: Award },
   { value: "60,000 sqm", label: "Workshop", icon: Factory },
-  { value: "200+", label: "Expert Team", icon: Users },
+  { value: "150+", label: "Expert Team", icon: Users },
   { value: "80+", label: "Countries", icon: Globe2 },
   { value: "50+", label: "Patents", icon: ShieldCheck },
 ];
@@ -200,24 +201,23 @@ function NavLinks() {
           ))}
         </div>
       </div>
-      <a className="nav-link" href="/services">
-        Services
-      </a>
-      <a className="nav-link" href="/certificates">
-        Certificates
-      </a>
-      <a className="nav-link" href="/news">
-        News
-      </a>
       <a className="nav-link" href="/video">
         Video
       </a>
       <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link nav-link-active" href="/about">
-        About
-      </a>
+      <div className="nav-dropdown">
+        <a className="nav-link nav-link-active dropdown-trigger" href="/about">
+          About <ChevronDown size={14} aria-hidden="true" />
+        </a>
+        <div className="dropdown-panel">
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/certificates">Certificates</a>
+          <a href="/news">News</a>
+        </div>
+      </div>
       <a className="nav-link" href="/contact">
         Contact
       </a>
@@ -277,8 +277,8 @@ export default function AboutPage() {
             <span>Established 1996</span>
             <h1>About Xinrongplas</h1>
             <p>
-              Leading Brand in Plastic Pipe Extrusion Machinery Since 1996,
-              bridging European standards with global manufacturing efficiency.
+              Specialist in Plastic Pipe Extrusion Machinery Since 1996,
+              combing European standards with global manufacturing efficiency.
             </p>
           </div>
         </section>
@@ -290,10 +290,10 @@ export default function AboutPage() {
               <h2>Jiangsu Xinrongplas Machinery Co., Ltd</h2>
               <p>
                 Established in 1996, Jiangsu Xinrongplas Machinery Co., Ltd.
-                has emerged as a global leader in high-performance plastic
-                extrusion technology. With nearly three decades of specialized
-                focus, we have cultivated a reputation for engineering
-                excellence and manufacturing precision.
+                has grown into a trusted global partner in high-performance
+                plastic extrusion technology. With more than three decades of
+                specialized focus, we have cultivated a reputation for
+                engineering excellence and manufacturing precision.
               </p>
               <p>
                 Our commitment to innovation has enabled us to deliver
@@ -311,7 +311,7 @@ export default function AboutPage() {
             </div>
             <div className="about-video-panel">
               <iframe
-                src="https://www.youtube.com/embed/_QFFSRfO96A"
+                src="https://www.youtube.com/embed/k0fubNSxLg4"
                 title="Xinrongplas Corporate Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
@@ -327,31 +327,9 @@ export default function AboutPage() {
         <section className="about-timeline-section" id="milestones">
           <div className="container about-section-heading">
             <span className="section-kicker">Development Milestones</span>
-            <h2>Over 28 Years of Innovation and Manufacturing Excellence</h2>
+            <h2>Over 30 Years of Innovation and Manufacturing Excellence</h2>
           </div>
-          <div className="about-timeline-wrap" aria-label="Xinrongplas development milestones">
-            {milestones.map((item) => (
-              <article className="about-timeline-card" key={`${item.year}-${item.title}`}>
-                <img
-                  src={item.image}
-                  alt={`${item.year} ${item.title} - Xinrongplas development milestone`}
-                  title={`${item.year} ${item.title}`}
-                  width={item.width}
-                  height={item.height}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="about-timeline-marker">
-                  <span />
-                  <strong>{item.year}</strong>
-                </div>
-                <div className="about-timeline-body">
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+          <AboutTimeline milestones={milestones} />
         </section>
 
         <section className="about-stats-band" aria-label="Xinrongplas key facts">
@@ -373,8 +351,8 @@ export default function AboutPage() {
               <h2>Pioneering Plastic Extrusion with People, Quality and Innovation</h2>
               <p>
                 We do not just build machines; we engineer the backbone of
-                modern infrastructure and automate every step of the extrusion
-                process.
+                modern infrastructure and automate the entire work flow of
+                extrusion process.
               </p>
             </div>
             <div className="about-values-grid">

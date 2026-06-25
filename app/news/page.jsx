@@ -50,24 +50,23 @@ function NavLinks() {
           ))}
         </div>
       </div>
-      <a className="nav-link" href="/services">
-        Services
-      </a>
-      <a className="nav-link" href="/certificates">
-        Certificates
-      </a>
-      <a className="nav-link nav-link-active" href="/news">
-        News
-      </a>
       <a className="nav-link" href="/video">
         Video
       </a>
       <a className="nav-link" href="/cases">
         Cases
       </a>
-      <a className="nav-link" href="/about">
-        About
-      </a>
+      <div className="nav-dropdown">
+        <a className="nav-link nav-link-active dropdown-trigger" href="/about">
+          About <ChevronDown size={14} aria-hidden="true" />
+        </a>
+        <div className="dropdown-panel">
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/certificates">Certificates</a>
+          <a href="/news">News</a>
+        </div>
+      </div>
       <a className="nav-link" href="/contact">
         Contact
       </a>
@@ -201,12 +200,24 @@ export default function NewsPage() {
             <Mail size={48} aria-hidden="true" />
             <h2>Join Our Technical Newsletter</h2>
             <p>
-              Get monthly engineering reports, material science updates, and the
+              Get engineering reports, material science updates, and the
               latest machinery innovations delivered to your inbox.
             </p>
-            <form id="form-news-subscribe" className="news-subscribe-form">
-              <input type="email" placeholder="professional@company.com" aria-label="Email address" />
-              <button type="button">Subscribe</button>
+            <form
+              id="form-news-subscribe"
+              className="news-subscribe-form"
+              action="/api/newsletter-subscriptions"
+              method="post"
+            >
+              <input name="source_page" type="hidden" value="/news" />
+              <input
+                type="email"
+                name="email"
+                placeholder="professional@company.com"
+                aria-label="Email address"
+                required
+              />
+              <button type="submit">Subscribe</button>
             </form>
             <small>By subscribing, you agree to our Privacy Policy and cookie usage.</small>
           </div>

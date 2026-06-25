@@ -1,40 +1,24 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { useRef } from "react";
+import { useState } from "react";
 
 export default function ReviewCarousel({ reviews }) {
-  const trackRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const orderedReviews = reviews.map((_, index) => (
+    reviews[(activeIndex + index) % reviews.length]
+  ));
 
   function scrollReviews(direction) {
-    const track = trackRef.current;
-
-    if (!track) {
-      return;
-    }
-
-    const firstCard = track.querySelector(".case-card");
-    const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
-    const distance = firstCard ? firstCard.offsetWidth + gap : track.clientWidth;
-
-    track.scrollBy({
-      left: direction * distance,
-      behavior: "smooth",
-    });
+    setActiveIndex((currentIndex) => (
+      (currentIndex + direction + reviews.length) % reviews.length
+    ));
   }
 
   return (
     <>
-      <div className="case-controls" aria-label="Testimonial navigation">
-        <button type="button" aria-label="Previous testimonial" onClick={() => scrollReviews(-1)}>
-          <ChevronLeft size={24} aria-hidden="true" />
-        </button>
-        <button type="button" aria-label="Next testimonial" onClick={() => scrollReviews(1)}>
-          <ChevronRight size={24} aria-hidden="true" />
-        </button>
-      </div>
-      <div className="case-grid" ref={trackRef}>
-        {reviews.map(([name, role, quote, image]) => (
+      <div className="case-grid">
+        {orderedReviews.map(([name, role, quote, image]) => (
           <article className="case-card" key={name}>
             <div className="star-row" aria-label="Five star rating">
               {[1, 2, 3, 4, 5].map((star) => (
@@ -49,6 +33,14 @@ export default function ReviewCarousel({ reviews }) {
             </div>
           </article>
         ))}
+      </div>
+      <div className="case-controls" aria-label="Testimonial navigation">
+        <button type="button" aria-label="Previous testimonial" onClick={() => scrollReviews(-1)}>
+          <ChevronLeft size={24} aria-hidden="true" />
+        </button>
+        <button type="button" aria-label="Next testimonial" onClick={() => scrollReviews(1)}>
+          <ChevronRight size={24} aria-hidden="true" />
+        </button>
       </div>
     </>
   );
