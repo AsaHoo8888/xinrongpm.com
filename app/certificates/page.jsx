@@ -22,32 +22,32 @@ const certificates = [
     category: "Recognition",
     image: "/images/certificates/xinrongplas-high-tech-enterprise-certificate.jpg",
     alt: "Xinrongplas High-tech Enterprise certificate",
-    width: 2560,
-    height: 1612,
+    width: 800,
+    height: 504,
   },
   {
     title: "ISO 9001",
     category: "Quality System",
     image: "/images/certificates/xinrongplas-iso-9001-quality-system-certificate.png",
     alt: "Xinrongplas ISO 9001 quality system certificate",
-    width: 1653,
-    height: 2339,
+    width: 800,
+    height: 1132,
   },
   {
     title: "SGS",
     category: "Verification",
     image: "/images/certificates/xinrongplas-sgs-verification-certificate.jpg",
     alt: "Xinrongplas SGS verification certificate",
-    width: 1891,
-    height: 2552,
+    width: 800,
+    height: 1080,
   },
   {
     title: "CE Certificate",
     category: "Compliance",
     image: "/images/certificates/xinrongplas-ce-certification.jpg",
     alt: "Xinrongplas CE certification for plastic pipe extrusion machinery",
-    width: 1653,
-    height: 2337,
+    width: 800,
+    height: 1131,
   },
   ...Array.from({ length: 15 }, (_, index) => {
     const number = String(index + 1).padStart(2, "0");
@@ -57,8 +57,8 @@ const certificates = [
       category: "PATENT",
       image: `/images/certificates/xinrongplas-patent-certificate-${number}.jpg`,
       alt: `Xinrongplas patent certificate ${number} for plastic extrusion machinery`,
-      width: index === 0 ? 1800 : 1810,
-      height: 2560,
+      width: 800,
+      height: index === 0 ? 1138 : 1131,
     };
   }),
   ...Array.from({ length: 6 }, (_, index) => {
@@ -69,8 +69,8 @@ const certificates = [
       category: "SOFTWARE COPYRIGHT",
       image: `/images/certificates/xinrongplas-software-copyright-certificate-${number}.png`,
       alt: `Xinrongplas software copyright certificate ${number}`,
-      width: 1182,
-      height: 1600,
+      width: 800,
+      height: 1083,
     };
   }),
 ];
